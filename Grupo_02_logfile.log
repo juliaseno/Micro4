@@ -1,0 +1,4283 @@
+----------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  \\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Grupo_2_T2.log
+  log type:  text
+ opened on:  18 Sep 2019, 09:50:51
+
+. 
+end of do-file
+
+. do "C:\Users\JULIAS~1\AppData\Local\Temp\STD01000000.tmp"
+
+. cd "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\" 
+\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA
+
+. 
+end of do-file
+
+. do "C:\Users\JULIAS~1\AppData\Local\Temp\STD01000000.tmp"
+
+. 
+. * ---------------------------- FAZENDO A BASE DE DADOS ----------------------------
+. 
+. // referencia:
+. // http://monsueto.50webs.com/cursos/Apostila_Microdados_Stata_FACE.pdf
+. 
+. * importando dados PNAD com infix
+. * -------------- 92 -------------- OK
+. clear
+
+. #delimit;
+delimiter now ;
+. infix
+> ano 1 - 2
+> UF 3 - 4
+> controle 5 - 10
+> serie 11 - 13
+> ordem 14 - 15
+> numfam 29 - 29
+> idade 24 - 26
+> sexo 16-16 
+> raca 30 - 30 
+> cursoME 148 - 148 
+> urbanorural 1547 - 1547 
+> asssindicato 951 - 951 
+> rendimentooutros 1120 - 1131 
+> numcompfam 1530 - 1531 
+> condicaonafam 28 - 28 
+> carteiraassSC 1085-1085 
+> posicao 1452 - 1453
+> PEA 1450 - 1450 
+> ocupacao 1458 - 1458 
+> previdencia 1459 - 1459 
+> temporario 580 - 581 
+> qtsempregadosAG 657 - 657  
+> qtsempregados 753 - 753
+> uniao 1411 - 1411
+> peso 1548 - 1552
+> ler 142 - 142
+> pesemp 745 - 745
+> carteirap 747 - 747
+> using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados\PES92.DAT", clear;
+(317355 observations read)
+
+. compress;
+ano was float now byte
+UF was float now byte
+serie was float now int
+ordem was float now byte
+idade was float now int
+numcompfam was float now byte
+posicao was float now byte
+temporario was float now byte
+peso was float now int
+
+.  save "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base92.dta", replace;
+file \\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base92.dta saved
+
+. #delimit cr
+delimiter now cr
+. 
+. * -------------- 93 -------------- OK
+. clear
+
+. #delimit;
+delimiter now ;
+. infix
+> ano 1 - 2
+> UF 3 - 4
+> carteiraassSC 1085-1085 
+> posicao 1452 - 1453
+> PEA 1450 - 1450 
+> ocupacao 1458 - 1458 
+> previdencia 1459 - 1459 
+> temporario 580 - 581 
+> qtsempregadosAG 657 - 657  
+> qtsempregados 753 - 753
+> peso 1548 - 1552
+> idade 24 - 26
+> pesemp 745 - 745
+> carteirap 747 - 747
+> using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados\PES93.DAT", clear;
+(322205 observations read)
+
+. compress;
+ano was float now byte
+UF was float now byte
+posicao was float now byte
+temporario was float now byte
+peso was float now int
+idade was float now int
+
+.  save "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base93.dta", replace;
+file \\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base93.dta saved
+
+. * -------------- 95 -------------- OK
+> clear
+> #delimit;
+. infix
+> ano 1 - 2
+> UF 3 - 4
+> idade 24 - 26
+> carteiraassSC 1085-1085 
+> posicao 1452 - 1453
+> PEA 1450 - 1450 
+> ocupacao 1458 - 1458 
+> previdencia 1459 - 1459 
+> temporario 580 - 581
+> qtsempregadosAG 657 - 657  
+> qtsempregados 753 - 753
+> peso 1548 - 1552
+> pesemp 745 - 745
+> carteirap 747 - 747
+> using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados\PES95.DAT", clear;
+(334263 observations read)
+
+. compress;
+ano was float now byte
+UF was float now byte
+idade was float now int
+posicao was float now byte
+temporario was float now byte
+peso was float now int
+
+.  save "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base95.dta", replace;
+file \\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base95.dta saved
+
+. #delimit cr
+delimiter now cr
+. 
+. * -------------- 96 -------------- OK
+. clear
+
+. #delimit;
+delimiter now ;
+. infix
+> ano 1 - 2
+> UF 3 - 4
+> posicao 1415 - 1416
+> temporario 282 - 283 
+> PEA 1413 - 1413 
+> ocupacao 1421 - 1421 
+> previdencia 1422 - 1422
+> carteiraassSC 787-787 
+> qtsempregadosAG 359 - 359
+> qtsempregados 455 - 455
+> peso 1511 - 1515
+> idade 24 - 26
+> pesemp 447 - 447
+> carteirap 449 - 449
+> using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados\PES96.TXT", clear;
+(331263 observations read)
+
+. compress;
+ano was float now byte
+UF was float now byte
+posicao was float now byte
+temporario was float now byte
+peso was float now int
+idade was float now int
+
+.  save "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base96.dta", replace;
+file \\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base96.dta saved
+
+. #delimit cr
+delimiter now cr
+. 
+. * -------------- 97 -------------- OK
+. clear
+
+. #delimit;
+delimiter now ;
+. infix
+> ano 1 - 2
+> UF 3 - 4
+> posicao 1150 - 1151
+> temporario 282 - 283 
+> PEA 1148 - 1148
+> ocupacao 1156 - 1156 
+> previdencia 1157 - 1157
+> carteiraassSC 787-787 
+> qtsempregadosAG 359 - 359  
+> qtsempregados 455 - 455
+> peso 1246 - 1250
+> idade 24 - 26
+> pesemp 447 - 447
+> carteirap 449 - 449
+> using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados\PES97.DAT", clear;
+(346269 observations read)
+
+. compress;
+ano was float now byte
+UF was float now byte
+posicao was float now byte
+temporario was float now byte
+peso was float now int
+idade was float now int
+
+.  save "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base97.dta", replace;
+file \\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base97.dta saved
+
+. #delimit cr
+delimiter now cr
+. 
+. * -------------- 98 -------------- OK
+. clear
+
+. #delimit;
+delimiter now ;
+. infix
+> ano 1 - 2
+> UF 3 - 4
+> controle 5 - 10
+> serie 11 - 13
+> ordem 14 - 15
+> numfam 29 - 29
+> idade 24 - 26
+> sexo 16-16 
+> raca 30 - 30 
+> cursoME 64 - 64 
+> urbanorural 740 - 740 
+> asssindicato 384 - 384 
+> rendimentooutros 435 - 446
+> numcompfam 723 - 724 
+> condicaonafam 28 - 28 
+> carteiraassSC 400-400 
+> posicao 645 - 646
+> PEA 643 - 643 
+> ocupacao 651 - 651 
+> previdencia 652 - 652 
+> temporario 131 - 132
+> qtsempregadosAG 208 - 208  
+> qtsempregados 304 - 304
+> peso 741 - 745
+> ler 58 - 58
+> pesemp 296 - 296
+> carteirap 298- 298
+> using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados\PES98.txt", clear;
+(344975 observations read)
+
+. compress;
+ano was float now byte
+UF was float now byte
+serie was float now int
+ordem was float now byte
+idade was float now int
+numcompfam was float now byte
+posicao was float now byte
+temporario was float now byte
+peso was float now int
+
+.  save "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base98.dta", replace;
+file \\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base98.dta saved
+
+. #delimit cr
+delimiter now cr
+. 
+. * -------------- 99 --------------
+. clear
+
+. #delimit;
+delimiter now ;
+. infix
+> ano 1 - 2
+> UF 3 - 4
+> posicao 645 - 646
+> temporario 131 - 132
+> PEA 643 - 643
+> ocupacao 651 - 651 
+> previdencia 652 - 652
+> carteiraassSC 400-400 
+> qtsempregadosAG 208 - 208  
+> qtsempregados 304 - 304
+> peso 741 - 745
+> idade 24 - 26
+> pesemp 296 - 296
+> carteirap 298- 298
+> using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados\PES99.txt", clear;
+(352393 observations read)
+
+. compress;
+ano was float now byte
+UF was float now byte
+posicao was float now byte
+temporario was float now byte
+peso was float now int
+idade was float now int
+
+.  save "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base99.dta", replace;
+file \\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base99.dta saved
+
+. #delimit cr
+delimiter now cr
+. 
+. * -------------- 01 --------------
+. clear
+
+. #delimit;
+delimiter now ;
+. infix
+> ano 1 - 4
+> UF 5 - 6
+> posicao 624 - 625
+> temporario 89 - 90
+> PEA 622 - 622
+> ocupacao 639 - 639
+> previdencia 631 - 631
+> carteiraassSC 356 - 356 
+> qtsempregadosAG 166 - 166  
+> qtsempregados 260 - 260
+> peso 720 - 724
+> idade 27 - 29
+> pesemp 252 - 252
+> carteirap 254- 254
+> using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados\PES01.txt", clear;
+(378837 observations read)
+
+. compress;
+ano was float now int
+UF was float now byte
+posicao was float now byte
+temporario was float now byte
+peso was float now int
+idade was float now int
+
+.  save "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base01.dta", replace;
+file \\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base01.dta saved
+
+. #delimit cr
+delimiter now cr
+. 
+. * -------------- 02 -------------- OK
+. clear
+
+. #delimit;
+delimiter now ;
+. infix
+> ano 1 - 4
+> UF 5 - 6
+> posicao 670 - 671
+> temporario 146 - 147
+> PEA 668 - 668 
+> ocupacao 676 - 677
+> previdencia 678 - 678
+> carteiraassSC 419 - 419 
+> qtsempregadosAG 223 - 223  
+> qtsempregados 317 - 317
+> peso 768 - 772
+> idade 27 - 29
+> pesemp 309 - 309
+> carteirap 311- 311
+> using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados\PES02.txt", clear;
+(385431 observations read)
+
+. compress;
+ano was float now int
+UF was float now byte
+posicao was float now byte
+temporario was float now byte
+ocupacao was float now byte
+peso was float now int
+idade was float now int
+
+.  save "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base02.dta", replace;
+file \\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base02.dta saved
+
+. #delimit cr
+delimiter now cr
+. 
+. * -------------- 03 -------------- OK
+. clear
+
+. #delimit;
+delimiter now ;
+. infix
+> ano 1 - 4
+> UF 5 - 6
+> posicao 789 - 790
+> temporario 151 - 152
+> PEA 787 - 787 
+> ocupacao 795 - 796
+> previdencia 797 -797
+> carteiraassSC 424 - 424 
+> qtsempregadosAG 228 - 228  
+> qtsempregados 322 - 322
+> peso 887 - 891
+> idade 27 - 29
+> pesemp 314 - 314
+> carteirap 316- 316
+> using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados\PES03.txt", clear;
+(384834 observations read)
+
+. compress;
+ano was float now int
+UF was float now byte
+posicao was float now byte
+temporario was float now byte
+ocupacao was float now byte
+peso was float now int
+idade was float now int
+
+.  save "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base03.dta", replace;
+file \\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base03.dta saved
+
+. #delimit cr
+delimiter now cr
+. 
+. * -------------- 04 -------------- OK
+. clear
+
+. #delimit;
+delimiter now ;
+. infix
+> ano 1 - 4
+> UF 5 - 6
+> controle 5-12
+> serie 13 - 15
+> ordem 16 - 17
+> numerodefamilia 32 - 32
+> sexo 18 - 18
+> raca 33 - 33
+> cursoME 69 - 70
+> urbanorural 782 - 782
+> asssindicato 415 - 415
+> rendimentooutros 469 - 480
+> numcompfam 767 - 768
+> condicaonafam 31 - 31
+> carteiraassSC 434 - 434 
+> posicao 697 - 698
+> temporario 161 - 162
+> PEA 683 - 683 
+> ocupacao 691 - 692
+> previdencia 693 -693
+> qtsempregadosAG 238 - 238  
+> qtsempregados 332 - 332
+> peso 783 - 787
+> idade 27 - 29
+> ler 61 - 61
+> pesemp 324 - 324
+> carteirap 326 - 326
+> using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados\PES04.txt", clear;
+(399354 observations read)
+
+. compress;
+ano was float now int
+UF was float now byte
+serie was float now int
+ordem was float now byte
+cursoME was float now byte
+numcompfam was float now byte
+posicao was float now byte
+temporario was float now byte
+ocupacao was float now byte
+peso was float now int
+idade was float now int
+
+.  save "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base04.dta", replace;
+file \\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base04.dta saved
+
+. #delimit cr
+delimiter now cr
+. 
+. clear
+
+. #delimit;
+delimiter now ;
+. infix
+> ano 1 - 4
+> UF 5 - 6
+> controle 5-12
+> serie 13 - 15
+> ordem 16 - 17
+> numerodefamilia 32 - 32
+> sexo 18 - 18
+> raca 33 - 33
+> cursoME 79- 80 
+> urbanorural 767 - 767
+> asssindicato 416 - 416
+> rendimentooutros 468 - 479
+> numcompfam 764 - 765
+> condicaonafam 31 - 31
+> carteiraassSC 435 - 435 
+> posicao 696 - 697
+> temporario 168 - 169
+> PEA 682 - 682 
+> ocupacao 690 - 691
+> previdencia 692 -692
+> qtsempregadosAG 236 - 236  
+> qtsempregados 326 - 326
+> peso 768 - 772
+> idade 27 - 29
+> ler 69 - 69
+> pesemp 318 - 318
+> using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados\PES14.txt", clear;
+(362627 observations read)
+
+. compress;
+ano was float now int
+UF was float now byte
+serie was float now int
+ordem was float now byte
+cursoME was float now byte
+numcompfam was float now byte
+posicao was float now byte
+temporario was float now byte
+ocupacao was float now byte
+peso was float now int
+idade was float now int
+
+.  save "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base14.dta", replace;
+file \\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base14.dta saved
+
+. #delimit cr
+delimiter now cr
+. 
+. * -------------- JUNTANDO BASES PNAD --------------
+. append using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base04.dta"
+
+. append using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base03.dta"
+
+. append using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base02.dta"
+
+. append using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base01.dta"
+
+. append using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base99.dta"
+
+. append using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base98.dta"
+
+. append using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base97.dta"
+
+. append using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base96.dta"
+
+. append using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base95.dta"
+
+. append using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base93.dta"
+
+. append using "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\base92.dta"
+
+. 
+. * ordenando dados por ano
+. sort ano 
+
+. 
+. * salvando base com tudo
+. save "\\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\basetudo.dta", replace
+file \\Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\basetudo.dta saved
+
+. 
+end of do-file
+
+. do "C:\Users\JULIAS~1\AppData\Local\Temp\STD01000000.tmp"
+
+. * ---------------------------- ORGANIZANDO E PRODUZINDO VARIAVEIS --------------------
+> --------
+. 
+. * ajustando compatibilidade dos bases 
+. 
+. * -------------- AJUSTANDO OCUPACAO (a variavel muda a partir de 2002)
+. 
+. gen ocupacaoc=.
+(4259806 missing values generated)
+
+. 
+. replace ocupacaoc=1 if ocupacao==1 & ano<=2001.5 // Técnica, científica, artística e a
+> ssemelhada
+(99764 real changes made)
+
+. replace ocupacaoc=1 if ocupacao==2 & ano>=2001.5 // Técnica, científica, artística e a
+> ssemelhada
+(48584 real changes made)
+
+. 
+. replace ocupacaoc=2 if ocupacao==2 & ano<=2001.5 // Administrativa
+(153199 real changes made)
+
+. replace ocupacaoc=2 if ocupacao==4 & ano>=2001.5 // Administrativa
+(60251 real changes made)
+
+. 
+. replace ocupacaoc=0 if ocupacao!=1 & ocupacao!=2 & ano<=2001.5 // Outro
+(2474597 real changes made)
+
+. replace ocupacaoc=0 if ocupacao!=2 & ocupacao!=4 & ano>=2001.5 // Outro
+(1423411 real changes made)
+
+. 
+. * -------------- DUMMIES PARA OCUPACAO
+. 
+. * 1992 e 1998
+. 
+. gen octec=. // Técnica, científica, artística e assemelhada 
+(4259806 missing values generated)
+
+. replace octec=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace octec=1 if ocupacao==1 
+(134948 real changes made)
+
+. 
+. gen ocadm=. // Administrativa
+(4259806 missing values generated)
+
+. replace ocadm=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace ocadm=1 if ocupacao==2
+(201783 real changes made)
+
+. 
+. gen ocagro=. // Agropecuária e produção extrativa vegetal e animal
+(4259806 missing values generated)
+
+. replace ocagro=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace ocagro=1 if ocupacao==3
+(308664 real changes made)
+
+. 
+. gen ocind=. // Indústria de transformação
+(4259806 missing values generated)
+
+. replace ocind=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace ocind=1 if ocupacao==4
+(286767 real changes made)
+
+. 
+. gen occom=. // Comércio e atividades auxiliares
+(4259806 missing values generated)
+
+. replace occom=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace occom=1 if ocupacao==5
+(296800 real changes made)
+
+. 
+. gen octrans=. // Transporte e comunicação
+(4259806 missing values generated)
+
+. replace octrans=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace octrans=1 if ocupacao==6
+(120499 real changes made)
+
+. 
+. gen ocser=. // Prestação de serviços
+(4259806 missing values generated)
+
+. replace ocser=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace ocser=1 if ocupacao==7
+(268508 real changes made)
+
+. 
+. //gen ocout=. // Outra ocupação, ocupação mal definida ou não declarada
+. //replace ocout=0 if ocupacao!=0
+. //replace ocout=1 if ocupacao==8
+. 
+. * 2004
+. gen ocdir=. // Diregentes em geral
+(4259806 missing values generated)
+
+. replace ocdir=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace ocdir=1 if ocupacao==1
+(134948 real changes made)
+
+. 
+. gen occa=. // Profissionais das ciencias e artes
+(4259806 missing values generated)
+
+. replace occa=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace occa=1 if ocupacao==2
+(201783 real changes made)
+
+. 
+. gen octnv=. // Tecnico de nivel medio
+(4259806 missing values generated)
+
+. replace octnv=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace octnv=1 if ocupacao==3
+(308664 real changes made)
+
+. 
+. gen ocsadm=. // Trabalhadores de servicos adm
+(4259806 missing values generated)
+
+. replace ocsadm=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace ocsadm=1 if ocupacao==4
+(286767 real changes made)
+
+. 
+. gen octs=. // Trabalhadores dos servicos
+(4259806 missing values generated)
+
+. replace octs=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace octs=1 if ocupacao==5
+(296800 real changes made)
+
+. 
+. gen ocvend=. // Vendedores e prestadores de servico e do comercio
+(4259806 missing values generated)
+
+. replace ocvend=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace ocvend=1 if ocupacao==6
+(120499 real changes made)
+
+. 
+. gen octagro=. // Trabalhadores agricolas
+(4259806 missing values generated)
+
+. replace octagro=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace octagro=1 if ocupacao==7
+(268508 real changes made)
+
+. 
+. gen ocprodbs=. // Trabalhadores da producao de bens e servicos reparacao e manutencao
+(4259806 missing values generated)
+
+. replace ocprodbs=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace ocprodbs=1 if ocupacao==8
+(304963 real changes made)
+
+. 
+. gen ocfaa=. // Membros das forcas armadas e auxiliares
+(4259806 missing values generated)
+
+. replace ocfaa=0 if ocupacao!=0
+(4259806 real changes made)
+
+. replace ocfaa=1 if ocupacao==9
+(6468 real changes made)
+
+. 
+. //gen ocoutmd=. // Outros e mal definidos
+. //replace ocoutmd=0 if ocupacao!=0
+. //replace ocoutmd=1 if ocupacao==10
+. 
+. 
+. * -------------- AJUSTANDO POSICAO(a variavel muda em 2004)
+. gen posicaooc=.
+(4259806 missing values generated)
+
+. * ate numero 10 posicao e igual em todos os anos e 14 igual
+. replace posicaooc=1 if posicao==1 // empregado com carteira
+(579267 real changes made)
+
+. replace posicaooc=2 if posicao==2 // militar
+(8216 real changes made)
+
+. replace posicaooc=3 if posicao==3 // func. publico
+(127451 real changes made)
+
+. replace posicaooc=4 if posicao==4 // outros sem carteira
+(343675 real changes made)
+
+. replace posicaooc=5 if posicao==5 // empregados sem declaracao de carteira
+(233 real changes made)
+
+. replace posicaooc=6 if posicao==6 // trab dom com carteira
+(35095 real changes made)
+
+. replace posicaooc=7 if posicao==7 // trab dom sem carteira
+(115690 real changes made)
+
+. replace posicaooc=8 if posicao==8 // trab dom sem dec de carteira
+(76 real changes made)
+
+. replace posicaooc=9 if posicao==9 // conta propria
+(429577 real changes made)
+
+. replace posicaooc=10 if posicao==10 // empregador
+(75505 real changes made)
+
+. replace posicaooc=14 if posicao==14 // sem dec
+(153 real changes made)
+
+. 
+. * 11
+. replace posicaooc=11 if posicao==11 & ano<=2003.5 // producao para consumo prop.
+(64793 real changes made)
+
+. replace posicaooc=11 if posicao==12 & ano>=2003.5 // producao para consumo prop.
+(15635 real changes made)
+
+. 
+. * 12
+. replace posicaooc=12 if posicao==12 & ano<=2003.5 // producao para const. prop.
+(2545 real changes made)
+
+. replace posicaooc=12 if posicao==13 & ano>=2003.5 // producao para const. prop.
+(438 real changes made)
+
+. 
+. * 13
+. replace posicaooc=13 if posicao==13 & ano<=2003.5 // nao remunerado
+(125184 real changes made)
+
+. replace posicaooc=13 if posicao==11 & ano>=2003.5 // nao remunerado
+(18616 real changes made)
+
+. 
+. * -------------- drop idade para idade ignorada
+. replace idade=. if idade>=900 
+(379 real changes made, 379 to missing)
+
+. 
+. * -------------- LABEL ocupacao
+. label define posicaooc_label 1 "Empregado com carteira" 2 "Militar" 3 "Func. Pub." 4 "
+> Outros sem carteira" 5 "Empregados sem decl. carteira" 6 "Domestico com carteira" 7 "D
+> omestico sem carteira" 8 "Dom. sem declaracao de carteira" 9 "Conta-propria" 10 "Empre
+> gador" 11 "Trabalhador consumo prop" 12 "Trad construcao prop uso" 13 "Nao remu" 14 "s
+> em dec"
+
+. label values posicaooc posicaooc_label
+
+. 
+. * -------------- temporario 
+. gen temporarioagro=0
+
+. replace temporarioagro=1 if temporario==4 // para temporario quando agro
+(46266 real changes made)
+
+. 
+. * -------------- dummy para TEMPORARIO 
+. gen temp=.
+(4259806 missing values generated)
+
+. replace temp=0 if posicaooc!=14 // so vale para se tem dado na ocupacao principal dife
+> rente de sem declaracao
+(4259653 real changes made)
+
+. * temporario
+. replace temp=1 if temporarioagro==1 // temporario na agricultura
+(46266 real changes made)
+
+. 
+. * -------------- PEA (dummy de pea com letras minusculas)
+. gen pea=. //sem declaracao (if PEA==3)
+(4259806 missing values generated)
+
+. replace pea=1 if PEA==1 // economicamente ativas
+(2090627 real changes made)
+
+. replace pea=0 if PEA==2 // nao economicamente ativas
+(1388655 real changes made)
+
+. 
+. 
+. ********* -------------- INFORMALIDADE -------------- *********
+. 
+. * -------------- A
+. * def. do paper: A (contract status): 
+. *a worker is classified as formal if they
+. *have a signed labor card in any employment. Through
+. *questionnaire routing the PNAD regards all public sector
+. *employees as having signed labor cards. Those who are
+. *self-employed or employers in their main job are classified
+. *as formal if they have a signed labor card from another
+. *paid second job.
+. 
+. 
+. 
+. * -------------- A
+. * def. do paper: A (contract status): 
+. *a worker is classified as formal if they
+. *have a signed labor card in any employment. Through
+. *questionnaire routing the PNAD regards all public sector
+. *employees as having signed labor cards. Those who are
+. *self-employed or employers in their main job are classified
+. *as formal if they have a signed labor card from another
+. *paid second job.
+. 
+. gen infA=0 //gerando dummy para se trab. informal de acordo com tipo A
+
+. 
+. *informais
+. replace infA=1 if posicaooc==4 // Outros s sem carteira
+(343675 real changes made)
+
+. replace infA=1 if posicaooc==5 // Empregados sem declaracao de carteira
+(233 real changes made)
+
+. replace infA=1 if posicaooc==7 // Trabalhador domestico sem carteira
+(115690 real changes made)
+
+. replace infA=1 if posicaooc==8 // Trabalhador doméstico sem declaração de carteira
+(76 real changes made)
+
+. replace infA=1 if posicaooc==9 // conta-propria
+(429577 real changes made)
+
+. replace infA=1 if posicaooc==10  // r
+(75505 real changes made)
+
+. // replace infA=1 if posicaooc==10 & (qtsempregados == 2 | qtsempregados == 4 | qtsemp
+> regados == 6) // empregador
+. replace infA=1 if posicaooc==11 // Trab. prod. prop. consumo
+(80428 real changes made)
+
+. replace infA=1 if posicaooc==12 // Trab. const. uso prop.
+(2983 real changes made)
+
+. replace infA=1 if posicaooc==13 // Nao remunerado
+(143800 real changes made)
+
+. 
+. *formais (redundante de proposito)
+. replace infA=0 if posicaooc==1 //Empregado com carteira
+(0 real changes made)
+
+. replace infA=0 if posicaooc==2 //Militar
+(0 real changes made)
+
+. replace infA=0 if posicaooc==3 //Func. Publico
+(0 real changes made)
+
+. replace infA=0 if posicaooc==6 //Trab. dom. com carteira
+(0 real changes made)
+
+. replace infA=0 if posicaooc==9 & carteiraassSC==1 // conta-propria
+(1368 real changes made)
+
+. replace infA=0 if posicaooc==10 & carteiraassSC==1 // empregador
+(554 real changes made)
+
+. // replace infA=0 if carteiraassSC==1
+. // replace infA=0 if posicaooc==10 & (qtsempregados == 0 | qtsempregados == 8) // empr
+> egador
+. 
+. * sem declaracao (redundante de proposito) e faixas de idade
+. replace infA=. if posicaooc==14 // Sem Declaracao
+(153 real changes made, 153 to missing)
+
+. replace infA=. if idade<=17 | idade>=66 // faixas de idade
+(1759982 real changes made, 1759982 to missing)
+
+. replace infA=. if pea!=1
+(642778 real changes made, 642778 to missing)
+
+. 
+. * gerar dummy para pessoas COM carteira de trabalho
+. // redundante mas util para comandos posteriores
+. gen carteira=. 
+(4259806 missing values generated)
+
+. replace carteira=1 if infA==0
+(865109 real changes made)
+
+. replace carteira=0 if infA==1
+(991784 real changes made)
+
+. 
+. 
+. 
+. * -------------- B
+. * def. do paper: B (social security status): 
+. //a worker is classified as formal if
+. //they make contributions to a social security institute (federal,
+. //state, or municipal) in respect of any employment.
+. //The PNAD asks all workers regardless of economic status
+. //or sector if they make social security contributions.
+. 
+. gen infB=.
+(4259806 missing values generated)
+
+. replace infB=0 if pea==1
+(2090627 real changes made)
+
+. 
+. *formais (redundante)
+. replace infB=0 if previdencia==1 // contribuintes
+(0 real changes made)
+
+. *informais
+. replace infB=1 if previdencia==2 // nao contribuintes
+(1032711 real changes made)
+
+. * sem declaracao
+. replace infB=. if previdencia==3 // sem declaracao
+(250 real changes made, 250 to missing)
+
+. 
+. * faixas de idade
+. replace infB=. if idade<=17 | idade>=66 // faixas de idade
+(233573 real changes made, 233573 to missing)
+
+. 
+. 
+. * -------------- C
+. * def. do paper: C (formal sector activity): 
+. // a worker is classified as
+. // employed in the formal sector if they are employed in an
+. // establishment of more than five employees. 
+. 
+. // The selfemployed and employers are defined as formal if their
+. // occupation is ‘‘creative and technical” or ‘‘administrative”
+. // (to capture ‘‘professional” activities). 
+. 
+. // All domestic, nonremunerated,
+. // subsistence, and temporary workers are classified
+. // in the informal sector (since no information about
+. // employer size is available for these), along with all the
+. // self-employed and employers in occupations other than
+. // ‘‘creative and technical” and ‘‘administrative.”
+. 
+. gen infC=.
+(4259806 missing values generated)
+
+. replace infC=0 if pea==1
+(2090627 real changes made)
+
+. 
+. * formal
+. replace infC=0 if pesemp==6 | pesemp==8
+(0 real changes made)
+
+. replace infC=0 if posicaooc==9 & ocupacaoc==1 // conta-propria & tec
+(0 real changes made)
+
+. replace infC=0 if posicaooc==9 & ocupacaoc==2 // conta-propria & adm
+(0 real changes made)
+
+. replace infC=0 if posicaooc==10 & ocupacaoc==1 // empregador & tec
+(0 real changes made)
+
+. replace infC=0 if posicaooc==10 & ocupacaoc==2 // empregador & adm
+(0 real changes made)
+
+. 
+. * informal
+. replace infC=1 if pesemp==2 | pesemp==4
+(167814 real changes made)
+
+. replace infC=1 if posicaooc==9 & ocupacaoc!=1 & ocupacaoc!=2 // conta-propria & nao te
+> c & nao adm
+(404107 real changes made)
+
+. replace infC=1 if posicaooc==10 & ocupacaoc!=1 & ocupacaoc!=2 // empregador & nao tec 
+> & nao adm
+(30138 real changes made)
+
+. replace infC=1 if posicaooc==6 //Trab. dom. com carteira
+(35081 real changes made)
+
+. replace infC=1 if posicaooc==7 // Trabalhador domestico sem carteira
+(115554 real changes made)
+
+. replace infC=1 if posicaooc==8 // Trabalhador doméstico sem declaração de carteira
+(76 real changes made)
+
+. replace infC=1 if posicaooc==13 // Nao remunerado
+(143760 real changes made)
+
+. replace infC=1 if posicaooc==11 // Trab. prod. prop. consumo
+(80419 real changes made)
+
+. replace infC=1 if posicaooc==12 // Trab. const. uso prop.
+(2983 real changes made)
+
+. replace infC=1 if temp==1 // Temporario
+(46073 real changes made)
+
+. 
+. * faixas de idade
+. replace infC=. if idade<=17 | idade>=66 // faixas de idade
+(235340 real changes made, 235340 to missing)
+
+. 
+. * -------------- variaveis necessarias para tabela 1
+. * dummy para EMPREGADO
+. gen empregado=. // nao se aplica
+(4259806 missing values generated)
+
+. replace empregado=0 if posicaooc!=14 // so vale para se tem dado na ocupacao principal
+>  diferente de sem declaracao
+(4259653 real changes made)
+
+. * variaveis para empregado
+. replace empregado=1 if posicaooc==2 //Militar
+(8216 real changes made)
+
+. replace empregado=1 if posicaooc==3 //Func. Publico
+(127451 real changes made)
+
+. replace empregado=1 if posicaooc==1 //Empregado com carteira
+(579267 real changes made)
+
+. replace empregado=1 if posicaooc==4 // Outros empregados sem carteira
+(343675 real changes made)
+
+. replace empregado=1 if posicaooc==5 // Empregados sem declaracao de carteira
+(233 real changes made)
+
+. 
+. * dummy para se EMPREGADO e SETOR PUBLICO
+. gen setorp=.
+(4259806 missing values generated)
+
+. replace setorp=0 if empregado==1 // so vale para se tem dado na ocupacao principal dif
+> erente de sem declaracao
+(1058842 real changes made)
+
+. * setor publico
+. replace setorp=1 if posicaooc==2 //Militar
+(8216 real changes made)
+
+. replace setorp=1 if posicaooc==3 //Func. Publico
+(127451 real changes made)
+
+. 
+. * dummy para conta-propria SEM EMPREGADOS
+. gen cpsememp=.
+(4259806 missing values generated)
+
+. replace cpsememp=0 if posicaooc!=14 // so vale para se tem dado na ocupacao principal 
+> diferente de sem declaracao
+(4259653 real changes made)
+
+. * conta-propria sozinho6
+. replace cpsememp=1 if posicaooc==9 // conta-propria
+(429577 real changes made)
+
+. 
+. * dummy para conta-propria COM EMPREGADOS  
+. gen cpcomemp=.
+(4259806 missing values generated)
+
+. replace cpcomemp=0 if posicaooc!=14 // so vale para se tem dado na ocupacao principal 
+> diferente de sem declaracao
+(4259653 real changes made)
+
+. * conta-propria com empregados
+. replace cpcomemp=1 if posicaooc==10 // empregador
+(75505 real changes made)
+
+. 
+. * dummy para TRABALHADOR DOMESTICO 
+. gen domestico=.
+(4259806 missing values generated)
+
+. replace domestico=0 if posicaooc!=14 // so vale para se tem dado na ocupacao principal
+>  diferente de sem declaracao
+(4259653 real changes made)
+
+. * domesticos
+. replace domestico=1 if posicaooc==6 // Trabalhador domestico com carteira
+(35095 real changes made)
+
+. replace domestico=1 if posicaooc==7 // Trabalhador domestico sem carteira
+(115690 real changes made)
+
+. replace domestico=1 if posicaooc==8 // Trabalhador doméstico sem declaração de carteir
+> a
+(76 real changes made)
+
+. 
+. * dummy para NAO REMUNERADOS 
+. gen naorem=.
+(4259806 missing values generated)
+
+. replace naorem=0 if posicaooc!=14 // so vale para se tem dado na ocupacao principal di
+> ferente de sem declaracao
+(4259653 real changes made)
+
+. * nao remunerados
+. replace naorem=1 if posicaooc==13 // Nao remunerado
+(143800 real changes made)
+
+. replace naorem=0 if posicaooc==12 // Trab. const. uso prop.
+(0 real changes made)
+
+. 
+. * dummy para SUBSISTENCIA 
+. gen conpro=.
+(4259806 missing values generated)
+
+. replace conpro=0 if posicaooc!=14 // so vale para se tem dado na ocupacao principal di
+> ferente de sem declaracao
+(4259653 real changes made)
+
+. * consumo proprio
+. replace conpro=1 if posicaooc==11 // Trab. prod. prop. consumo
+(80428 real changes made)
+
+. 
+. * dummy para TEMPORARIO 
+. //gen temp=.
+. //replace temp=0 if posicaooc!=14 // so vale para se tem dado na ocupacao principal di
+> ferente de sem declaracao
+. * temporario
+. //replace temp=1 if temporarioagro==1 // temporario na agricultura
+. 
+. ******** CONDICOES PARA TODAS AS VARIAVEIS ********
+. *tem que estar na PEA
+. replace empregado=. if pea==0
+(1388655 real changes made, 1388655 to missing)
+
+. replace empregado=. if pea==.
+(780524 real changes made, 780524 to missing)
+
+. 
+. replace setorp=. if pea==0
+(10031 real changes made, 10031 to missing)
+
+. replace setorp=. if pea==.
+(0 real changes made)
+
+. 
+. replace cpsememp=. if pea==0
+(1388655 real changes made, 1388655 to missing)
+
+. replace cpsememp=. if pea==.
+(780524 real changes made, 780524 to missing)
+
+. 
+. replace domestico=. if pea==0
+(1388655 real changes made, 1388655 to missing)
+
+. replace domestico=. if pea==.
+(780524 real changes made, 780524 to missing)
+
+. 
+. replace naorem=. if pea==0
+(1388655 real changes made, 1388655 to missing)
+
+. replace naorem=. if pea==.
+(780524 real changes made, 780524 to missing)
+
+. 
+. replace conpro=. if pea==0
+(1388655 real changes made, 1388655 to missing)
+
+. replace conpro=. if pea==.
+(780524 real changes made, 780524 to missing)
+
+. 
+. replace cpcomemp=. if pea==0
+(1388655 real changes made, 1388655 to missing)
+
+. replace cpcomemp=. if pea==.
+(780524 real changes made, 780524 to missing)
+
+. 
+. replace temp=. if pea==0
+(1388655 real changes made, 1388655 to missing)
+
+. replace temp=. if pea==.
+(780524 real changes made, 780524 to missing)
+
+. 
+. * garantindo as faixas de idade para a categoria de empregados
+. replace empregado=. if idade<=17
+(179949 real changes made, 179949 to missing)
+
+. replace empregado=. if idade>=66
+(53632 real changes made, 53632 to missing)
+
+. 
+. replace setorp=. if idade<=17
+(58486 real changes made, 58486 to missing)
+
+. replace setorp=. if idade>=66
+(8349 real changes made, 8349 to missing)
+
+. 
+. replace cpsememp=. if idade<=17
+(179949 real changes made, 179949 to missing)
+
+. replace cpsememp=. if idade>=66
+(53632 real changes made, 53632 to missing)
+
+. 
+. replace naorem=. if idade<=17
+(179949 real changes made, 179949 to missing)
+
+. replace naorem=. if idade>=66
+(53632 real changes made, 53632 to missing)
+
+. 
+. replace conpro=. if idade<=17
+(179949 real changes made, 179949 to missing)
+
+. replace conpro=. if idade>=66
+(53632 real changes made, 53632 to missing)
+
+. 
+. replace domestico=. if idade<=17
+(179949 real changes made, 179949 to missing)
+
+. replace domestico=. if idade>=66
+(53632 real changes made, 53632 to missing)
+
+. 
+. replace cpcomemp=. if idade<=17
+(179949 real changes made, 179949 to missing)
+
+. replace cpcomemp=. if idade>=66
+(53632 real changes made, 53632 to missing)
+
+. 
+. replace temp=. if idade<=17
+(179949 real changes made, 179949 to missing)
+
+. replace temp=. if idade>=66
+(53632 real changes made, 53632 to missing)
+
+. 
+. ******** FIM DA CONDICAO ********
+. 
+. * ---------------------------- 1992, 1998 E 2004 ----------------------------
+. 
+. * -------------- Agrupando familias --------------
+. replace controle=0 if controle==.
+(2835495 real changes made)
+
+. replace serie=0 if serie==.
+(2835495 real changes made)
+
+. replace numfam=0 if numfam==.
+(3597476 real changes made)
+
+. 
+. gen uf = UF*1000000
+
+. gen descontrole = controle - uf
+
+. 
+. egen fam1 = concat(ano controle serie numfam) if ano==92 | ano==98
+(3597476 missing values generated)
+
+. egen fam2 = concat(ano descontrole serie numfam) if ano==2004 | ano==2014
+(3497825 missing values generated)
+
+. egen fam3 = concat(ano controle serie numfam) if ano==2004 | ano==2014
+(3497825 missing values generated)
+
+. 
+. destring fam1, replace
+fam1 has all characters numeric; replaced as double
+(3597476 missing values generated)
+
+. destring fam2, replace
+fam2 has all characters numeric; replaced as double
+(3497825 missing values generated)
+
+. destring fam3, replace
+fam3 contains nonnumeric characters; no replace
+
+. 
+. gen fam=.
+(4259806 missing values generated)
+
+. replace fam=fam1 if ano==92 | ano==98
+(662330 real changes made)
+
+. replace fam=fam2 if ano==2004 | ano==2014
+(761981 real changes made)
+
+. 
+. * -------------- agrupando dados por familia e ano
+. sort ano fam
+
+. 
+. * -------------- Label --------------
+. * -------------- sexo
+. label define sexo_label 2 "Masculino" 4 "Feminino"
+
+. label values sexo sexo_label
+
+. 
+. * -------------- Dummies --------------
+. * -------------- sexo
+. gen feminino=0
+
+. replace feminino=1 if sexo==4 
+(730926 real changes made)
+
+. 
+. gen masculino=0
+
+. replace masculino=1 if sexo==2 // redundante de proposito
+(693385 real changes made)
+
+. 
+. * -------------- raça
+. replace raca=. if raca==9 
+(72 real changes made, 72 to missing)
+
+. 
+. gen indigena=0 
+
+. replace indigena=1 if raca==0
+(3688 real changes made)
+
+. 
+. gen preta=0
+
+. replace preta=1 if raca==4
+(94835 real changes made)
+
+. 
+. gen amarela=0
+
+. replace amarela=1 if raca==6
+(5164 real changes made)
+
+. 
+. gen parda=0
+
+. replace parda=1 if raca==8
+(640218 real changes made)
+
+. 
+. gen branca=0
+
+. replace branca=1 if raca==2
+(680333 real changes made)
+
+. 
+. * -------------- curso ME
+. gen primario=0
+
+. replace primario=1 if cursoME==1 
+(170266 real changes made)
+
+. replace primario=1 if cursoME==4 
+(280056 real changes made)
+
+. *agrupamos primário e primeiro grau
+. 
+. gen sgrau=0
+
+. replace sgrau=1 if cursoME==2
+(30601 real changes made)
+
+. replace sgrau=1 if cursoME==3
+(19900 real changes made)
+
+. replace sgrau=1 if cursoME==5
+(189699 real changes made)
+
+. *agrupamos os dois ensinos médio e segundo grau
+. 
+. gen superior=0
+
+. replace superior=1 if cursoME==6 & ano<=2005
+(44700 real changes made)
+
+. replace superior=1 if cursoME==8 & ano==2014
+(33974 real changes made)
+
+. 
+. gen mestrado=0
+
+. replace mestrado=1 if cursoME==7 & ano<=2005
+(2058 real changes made)
+
+. replace mestrado=1 if cursoME==9 & ano==2014
+(1666 real changes made)
+
+. 
+. * -------------- urbano ou rural 
+. gen urbano=0
+
+. replace urbano=1 if urbanorural==1
+(1160162 real changes made)
+
+. replace urbano=1 if urbanorural==2
+(13608 real changes made)
+
+. replace urbano=1 if urbanorural==3
+(8398 real changes made)
+
+. 
+. * -------------- sindicato 
+. gen sindicato=0
+
+. replace sindicato=1 if asssindicato==1
+(112967 real changes made)
+
+. replace sindicato=. if asssindicato==9
+(155 real changes made, 155 to missing)
+
+. 
+. * -------------- UF
+. gen norte=0
+
+. replace norte=1 if UF<=20 
+(414219 real changes made)
+
+. 
+. gen nordeste=0
+
+. replace nordeste=1 if UF<=30 & UF>=20
+(1353062 real changes made)
+
+. 
+. gen sul=0
+
+. replace sul=1 if UF<=50 & UF>=40
+(761187 real changes made)
+
+. 
+. gen centro=0
+
+. replace centro=1 if UF>=50
+(451485 real changes made)
+
+. 
+. * -------------- analfabeto 
+. gen analfabeto=.
+(4259806 missing values generated)
+
+. replace analfabeto=0 if ler==0 | ler==1 | ler==9
+(1109910 real changes made)
+
+. replace analfabeto=1 if ler==3
+(280648 real changes made)
+
+. 
+. * -------------- Gerais --------------
+. 
+. * -------------- idade ao quadrado
+. gen idadequad = idade^2
+(379 missing values generated)
+
+. 
+. * -------------- Variaveis derivadas --------------
+. 
+. * total de carteira assinada na familia
+. bysort UF fam: egen total_carteiras_fam = sum(carteira)
+
+. 
+. ****Dummy Trabalhador de conta própria
+. gen autonomo=.
+(4259806 missing values generated)
+
+. replace autonomo=0 if posicaooc==1 | posicaooc==2 | posicaooc==3 | posicaooc==4 | posi
+> caooc==5 | posicaooc==6 | posicaooc==7 | posicaooc==8 | posicaooc==11 | posicaooc==12 
+> | posicaooc==13 | posicaooc==14
+(1437067 real changes made)
+
+. replace autonomo=1 if posicaooc==9 | posicaooc==10
+(505082 real changes made)
+
+. 
+. bysort UF fam: egen total_autonomo = sum(autonomo)
+
+. 
+. *Gerar dummy para criança
+. gen crianca=.
+(4259806 missing values generated)
+
+. replace crianca=0 if idade<=12 
+(1079257 real changes made)
+
+. replace crianca =1 if idade>=13 
+(3180549 real changes made)
+
+. *Quantidade de criança na família 
+. bysort UF fam: egen total_crianca_fam = sum(crianca)
+
+. 
+. *Gerar dummy para idoso 
+. gen idoso=.
+(4259806 missing values generated)
+
+. replace idoso=0 if idade<=64 
+(4004255 real changes made)
+
+. replace idoso=1 if idade>=65
+(255551 real changes made)
+
+. *Quantidade de idoso na família
+. bysort UF fam: egen total_idoso_fam = sum(idoso)
+
+. 
+. *Outros rendimentos da familia 
+. //hist rendimentooutros if ano==92 | ano==98 | ano==2004 
+. 
+. replace rendimentooutros=. if rendimentooutros>=1000000
+(308 real changes made, 308 to missing)
+
+. 
+. replace rendimentooutros=. if rendimentooutros<=0
+(661417 real changes made, 661417 to missing)
+
+. replace rendimentooutros=. if rendimentooutros>=90000000
+(0 real changes made)
+
+. 
+. bysort UF fam: egen renda_total_fam = sum(rendimentooutros/numcompfam)
+
+. 
+. * -------------- drop 
+. 
+. drop if idade<=17 | idade>=66
+(1760008 observations deleted)
+
+. 
+. drop if pea!=1
+(642778 observations deleted)
+
+. 
+. gen lrenda_total_fam = log(renda_total_fam)
+(1845487 missing values generated)
+
+. 
+. 
+. * -------------- organizando dados por familia e ano
+. sort ano fam
+
+. 
+. 
+. * VARIAVEL PARA CONJUGE COM OU SEM CARTEIRA ASSINADA
+. * se tem conjuge
+. gen conjuge=.
+(1857020 missing values generated)
+
+. replace conjuge=0 if idade>=18
+(1857020 real changes made)
+
+. replace conjuge=1 if condicaonafam==2
+(158411 real changes made)
+
+. replace conjuge=0 if condicaonafam!=2
+(0 real changes made)
+
+. 
+end of do-file
+
+. do "C:\Users\JULIAS~1\AppData\Local\Temp\STD01000000.tmp"
+
+. * informalidadeconj - sem ser casado para a familia toda
+. gen conjugesemcart=0
+
+. replace conjugesemcart=1 if conjuge==1 & infA==1
+(89056 real changes made)
+
+. 
+. bysort UF fam: egen informalidadeconj=max(conjugesemcart)
+
+. 
+end of do-file
+
+. do "C:\Users\JULIAS~1\AppData\Local\Temp\STD01000000.tmp"
+
+. * ---------------------------- REPLICANDO RESULTADOS ----------------------------
+. 
+. * -------------- TABELA 1 - todos os anos --------------
+. 
+. table ano, c(mean empregado mean setorp mean cpsememp mean cpcomemp), [fw=peso]   
+
+--------------------------------------------------------------------------
+      ano | mean(empreg~o)    mean(setorp)  mean(cpsememp)  mean(cpcomemp)
+----------+---------------------------------------------------------------
+       92 |       .5228855        .1273269        .2179562        .0384105
+       93 |       .5257799        .1288406        .2187821        .0370733
+       95 |       .5112498        .1414566        .2281105        .0410234
+       96 |       .5222638        .1369759        .2210956        .0372533
+       97 |       .5089604         .133915        .2217618         .040404
+       98 |        .507267        .1327035        .2206249        .0400953
+       99 |       .4938815         .136641        .2194017        .0395116
+     2001 |       .5169683        .1251539        .2085654        .0399117
+     2002 |       .5180047        .1235403        .2078399        .0405166
+     2003 |       .5155168        .1268124        .2059301        .0393184
+     2004 |       .5505182        .1190126         .208031        .0390797
+     2014 |       .6142542        .1162033        .1978478        .0351542
+--------------------------------------------------------------------------
+
+. 
+. table ano, c(mean domestico mean naorem mean conpro mean temp), [fw=peso] 
+
+--------------------------------------------------------------------------
+      ano | mean(domest~o)    mean(naorem)    mean(conpro)      mean(temp)
+----------+---------------------------------------------------------------
+       92 |       .0578451        .0614213        .0414216        .0289338
+       93 |       .0606563        .0618721        .0402493        .0269921
+       95 |       .0669023        .0594577        .0383176        .0251763
+       96 |       .0664996         .055294        .0328133        .0236043
+       97 |       .0687422        .0537868        .0330432        .0238552
+       98 |       .0655429         .051194        .0306455         .023327
+       99 |       .0682961        .0550549        .0325631        .0231068
+     2001 |       .0711244        .0455055        .0272252        .0237012
+     2002 |       .0709438        .0465779        .0284127        .0237138
+     2003 |       .0705177        .0449151        .0299483        .0251891
+     2004 |       .0769713        .0464483         .028801        .0262172
+     2014 |       .0642684        .0206389         .031267        .0106663
+--------------------------------------------------------------------------
+
+. 
+end of do-file
+
+. do "C:\Users\JULIAS~1\AppData\Local\Temp\STD01000000.tmp"
+
+. 
+. // table ano, c(mean domestico), [fw=peso] // dado usado no slide
+. 
+. //logout, save(domestica) excel text: table ano, c(mean domestico), [fw=peso] 
+. 
+. //table pr, c(mean masculino pea )
+. 
+. * -------------- TABELA 2 - todos os anos --------------
+. 
+. table pea, c(mean infA mean infB mean infC) by(ano), [fw=peso] 
+
+----------------------------------------------
+ano and   |
+pea       | mean(infA)  mean(infB)  mean(infC)
+----------+-----------------------------------
+92        |
+        1 |   .5480012    .4763442    .4616246
+----------+-----------------------------------
+93        |
+        1 |   .5562512    .4851111    .4622653
+----------+-----------------------------------
+95        |
+        1 |   .5611281    .4894441    .4797399
+----------+-----------------------------------
+96        |
+        1 |   .5512255    .4849555    .4694228
+----------+-----------------------------------
+97        |
+        1 |   .5508878    .4806009    .4708474
+----------+-----------------------------------
+98        |
+        1 |      .5458    .4699307    .4594658
+----------+-----------------------------------
+99        |
+        1 |   .5492192    .4742786    .4646986
+----------+-----------------------------------
+2001      |
+        1 |   .5349286    .4590053    .4498077
+----------+-----------------------------------
+2002      |
+        1 |   .5384962    .4661562    .4867043
+----------+-----------------------------------
+2003      |
+        1 |   .5278187    .4536878    .4835596
+----------+-----------------------------------
+2004      |
+        1 |   .5481882     .458181    .4892575
+----------+-----------------------------------
+2014      |
+        1 |   .4643444    .3345836    .4239016
+----------------------------------------------
+
+. //logout, save(PEA1) excel text: table pea, c(mean infA mean infB mean infC) by(ano), 
+> [fw=peso] 
+. 
+. table empregado, c(mean infA mean infB mean infC) by(ano), [fw=peso] 
+
+----------------------------------------------
+ano and   |
+empregado | mean(infA)  mean(infB)  mean(infC)
+----------+-----------------------------------
+92        |
+        0 |   .8465417    .6920724    .7730042
+        1 |   .2755935    .2794321    .1775082
+----------+-----------------------------------
+93        |
+        0 |   .8538553    .7016515    .7826971
+        1 |   .2878311    .2897508    .1732561
+----------+-----------------------------------
+95        |
+        0 |   .8548077    .7057236    .7859589
+        1 |   .2803732    .2826874    .1870751
+----------+-----------------------------------
+96        |
+        0 |   .8318647      .68208    .7711908
+        1 |   .2945134    .3046594    .1937229
+----------+-----------------------------------
+97        |
+        0 |    .817413    .6752462    .7569562
+        1 |    .293747    .2928155    .1948357
+----------+-----------------------------------
+98        |
+        0 |   .7950878    .6633887    .7329488
+        1 |   .3036546    .2820361     .193896
+----------+-----------------------------------
+99        |
+        0 |   .7832269     .657656    .7269629
+        1 |   .3094134    .2863691     .195951
+----------+-----------------------------------
+2001      |
+        0 |   .7717941    .6493856    .7130949
+        1 |   .3136123    .2811162    .2038435
+----------+-----------------------------------
+2002      |
+        0 |     .77776    .6622232    .7915367
+        1 |   .3158649    .2837198    .2030875
+----------+-----------------------------------
+2003      |
+        0 |   .7643665    .6446257     .777723
+        1 |   .3055107    .2742485    .2071046
+----------+-----------------------------------
+2004      |
+        0 |   .8414651    .6946784    .8586727
+        1 |   .3087363    .2651317      .18782
+----------+-----------------------------------
+2014      |
+        0 |   .8503445    .5964795    .8584346
+        1 |   .2219399    .1701154    .1510189
+----------------------------------------------
+
+. 
+. table cpsememp, c(mean infA mean infB mean infC) by(ano), [fw=peso] 
+
+----------------------------------------------
+ano and   |
+cpsememp  | mean(infA)  mean(infB)  mean(infC)
+----------+-----------------------------------
+92        |
+        0 |   .4230229    .3888721    .3241563
+        1 |   .9964329    .7901309     .954887
+----------+-----------------------------------
+93        |
+        0 |   .4331692    .3992934    .3249699
+        1 |   .9957471    .7914919    .9525138
+----------+-----------------------------------
+95        |
+        0 |   .4324528    .3948887    .3417755
+        1 |   .9965451    .8093894    .9467638
+----------+-----------------------------------
+96        |
+        0 |   .4247518    .3964368     .334803
+        1 |   .9967837    .7968181    .9444815
+----------+-----------------------------------
+97        |
+        0 |   .4239116    .3862959    .3362247
+        1 |   .9964908    .8115425    .9433374
+----------+-----------------------------------
+98        |
+        0 |   .4180399    .3679701     .323344
+        1 |   .9971223    .8301541     .940505
+----------+-----------------------------------
+99        |
+        0 |   .4235054    .3740119    .3315571
+        1 |   .9964899    .8310135    .9384298
+----------+-----------------------------------
+2001      |
+        0 |   .4131665    .3577915     .323976
+        1 |   .9969743    .8430782    .9273937
+----------+-----------------------------------
+2002      |
+        0 |   .4182783    .3645434    .3667055
+        1 |    .996694    .8534411      .94413
+----------+-----------------------------------
+2003      |
+        0 |    .406322    .3524829    .3652244
+        1 |   .9963119    .8439409    .9398624
+----------+-----------------------------------
+2004      |
+        0 |   .4304382     .360783    .3697174
+        1 |   .9964594    .8290898    .9448177
+----------+-----------------------------------
+2014      |
+        0 |   .3330183     .245004    .3008867
+        1 |   .9967918    .6977741    .9226518
+----------------------------------------------
+
+. 
+. table cpcomemp, c(mean infA mean infB mean infC) by(ano), [fw=peso] 
+
+----------------------------------------------
+ano and   |
+cpcomemp  | mean(infA)  mean(infB)  mean(infC)
+----------+-----------------------------------
+92        |
+        0 |   .5301091    .4823515    .4800676
+        1 |   .9959208    .3259899           0
+----------+-----------------------------------
+93        |
+        0 |    .539426    .4910997    .4800628
+        1 |   .9932633    .3295915           0
+----------+-----------------------------------
+95        |
+        0 |    .542602    .4965627    .4966613
+        1 |   .9942015    .3230444    .0851498
+----------+-----------------------------------
+96        |
+        0 |   .5343046    .4910498    .4849526
+        1 |   .9885201    .3274747    .0728458
+----------+-----------------------------------
+97        |
+        0 |   .5322534    .4859303    .4857526
+        1 |   .9934537    .3540048    .1171387
+----------+-----------------------------------
+98        |
+        0 |   .5270997    .4739817    .4744046
+        1 |   .9934948     .372931    .1028015
+----------+-----------------------------------
+99        |
+        0 |   .5310025    .4780639    .4787333
+        1 |   .9920492    .3822682     .123715
+----------+-----------------------------------
+2001      |
+        0 |   .5158949    .4614669    .4627149
+        1 |   .9927898    .3997958    .1398302
+----------+-----------------------------------
+2002      |
+        0 |   .5194116    .4678253    .4678046
+        1 |   .9904439    .4266266    .9345949
+----------+-----------------------------------
+2003      |
+        0 |   .5087745      .45612    .4651735
+        1 |   .9931329    .3942627    .9327952
+----------+-----------------------------------
+2004      |
+        0 |   .5301771     .460323    .4712664
+        1 |   .9910589    .4061174      .93416
+----------+-----------------------------------
+2014      |
+        0 |   .4450545    .3370033    .4064326
+        1 |   .9937769    .2681724    .9033576
+----------------------------------------------
+
+. 
+. table domestico, c(mean infA mean infB mean infC) by(ano), [fw=peso] 
+
+----------------------------------------------
+ano and   |
+domestico | mean(infA)  mean(infB)  mean(infC)
+----------+-----------------------------------
+92        |
+        0 |   .5332236      .45853    .4285738
+        1 |   .7886906    .7664573           1
+----------+-----------------------------------
+93        |
+        0 |    .540944    .4661147    .4275421
+        1 |   .7933022    .7792393           1
+----------+-----------------------------------
+95        |
+        0 |   .5457349    .4700725    .4424803
+        1 |   .7758206    .7596463           1
+----------+-----------------------------------
+96        |
+        0 |   .5371348     .466949    .4318163
+        1 |   .7490269    .7377715           1
+----------+-----------------------------------
+97        |
+        0 |   .5365355    .4622165    .4317998
+        1 |   .7453196    .7296525           1
+----------+-----------------------------------
+98        |
+        0 |   .5327617     .453309    .4215947
+        1 |   .7316886    .7069344           1
+----------+-----------------------------------
+99        |
+        0 |   .5361087    .4573538    .4254677
+        1 |   .7280737    .7051657           1
+----------+-----------------------------------
+2001      |
+        0 |   .5210664    .4412533    .4077012
+        1 |    .715968    .6908291           1
+----------+-----------------------------------
+2002      |
+        0 |   .5245973    .4486791    .4475225
+        1 |   .7205107    .6950294           1
+----------+-----------------------------------
+2003      |
+        0 |   .5140162    .4361753    .4443785
+        1 |    .709747    .6845145           1
+----------+-----------------------------------
+2004      |
+        0 |   .5329391    .4420302    .4467736
+        1 |    .731053    .6521652           1
+----------+-----------------------------------
+2014      |
+        0 |   .4499621    .3198259    .3843337
+        1 |   .6737469    .5494522           1
+----------------------------------------------
+
+. //logout, save(domestico) excel text: table domestico, c(mean infA mean infB mean infC
+> ) by(ano), [fw=peso] 
+. 
+. table naorem, c(mean infA mean infB mean infC) by(ano), [fw=peso] 
+
+----------------------------------------------
+ano and   |
+naorem    | mean(infA)  mean(infB)  mean(infC)
+----------+-----------------------------------
+92        |
+        0 |    .518422    .4435734    .4263965
+        1 |          1    .9770499           1
+----------+-----------------------------------
+93        |
+        0 |   .5269848     .453043    .4268002
+        1 |          1    .9712464           1
+----------+-----------------------------------
+95        |
+        0 |   .5333842    .4585798    .4468932
+        1 |          1    .9777915           1
+----------+-----------------------------------
+96        |
+        0 |   .5249586    .4565294    .4385557
+        1 |          1    .9707448           1
+----------+-----------------------------------
+97        |
+        0 |   .5253583    .4527559    .4407805
+        1 |          1    .9704399           1
+----------+-----------------------------------
+98        |
+        0 |    .521293    .4427823     .430342
+        1 |          1    .9731287           1
+----------+-----------------------------------
+99        |
+        0 |   .5229555    .4451597    .4335184
+        1 |          1    .9741044           1
+----------+-----------------------------------
+2001      |
+        0 |   .5127563    .4347065    .4235986
+        1 |          1    .9686492           1
+----------+-----------------------------------
+2002      |
+        0 |   .5159501      .44124    .4616417
+        1 |          1    .9761741           1
+----------+-----------------------------------
+2003      |
+        0 |   .5056132    .4292269    .4592728
+        1 |          1     .973909           1
+----------+-----------------------------------
+2004      |
+        0 |     .52618    .4337297    .4644822
+        1 |          1    .9606574           1
+----------+-----------------------------------
+2014      |
+        0 |   .4530561    .3243218     .411761
+        1 |          1    .8215274           1
+----------------------------------------------
+
+. 
+. table conpro, c(mean infA mean infB mean infC) by(ano), [fw=peso] 
+
+----------------------------------------------
+ano and   |
+conpro    | mean(infA)  mean(infB)  mean(infC)
+----------+-----------------------------------
+92        |
+        0 |   .5284696    .4540263    .4383641
+        1 |          1     .992695           1
+----------+-----------------------------------
+93        |
+        0 |   .5376416    .4637794    .4397142
+        1 |          1    .9937422           1
+----------+-----------------------------------
+95        |
+        0 |   .5436416    .4693422    .4590518
+        1 |          1    .9939348           1
+----------+-----------------------------------
+96        |
+        0 |   .5360002    .4677665    .4516056
+        1 |          1    .9915583           1
+----------+-----------------------------------
+97        |
+        0 |   .5355405     .463134    .4527771
+        1 |          1    .9918788           1
+----------+-----------------------------------
+98        |
+        0 |   .5314407    .4533296    .4424177
+        1 |          1    .9950035           1
+----------+-----------------------------------
+99        |
+        0 |   .5340463    .4567513    .4466884
+        1 |          1    .9953526           1
+----------+-----------------------------------
+2001      |
+        0 |   .5219126    .4440143    .4344303
+        1 |          1    .9947636           1
+----------+-----------------------------------
+2002      |
+        0 |   .5250002    .4506695    .4717071
+        1 |          1    .9957289           1
+----------+-----------------------------------
+2003      |
+        0 |   .5132411    .4369562    .4676157
+        1 |          1    .9956322           1
+----------+-----------------------------------
+2004      |
+        0 |   .5347897    .4425156    .4742129
+        1 |          1    .9872529           1
+----------+-----------------------------------
+2014      |
+        0 |   .4470555    .3146988    .4053073
+        1 |          1     .950666           1
+----------------------------------------------
+
+. 
+. table temp, c(mean infA mean infB mean infC) by(ano), [fw=peso] 
+
+----------------------------------------------
+ano and   |
+temp      | mean(infA)  mean(infB)  mean(infC)
+----------+-----------------------------------
+92        |
+        0 |   .5372239    .4634179    .4455867
+        1 |   .9097039    .9100643           1
+----------+-----------------------------------
+93        |
+        0 |    .546386    .4730558    .4473481
+        1 |    .911871    .9195963           1
+----------+-----------------------------------
+95        |
+        0 |   .5524477    .4789681    .4663442
+        1 |   .8972343    .8950585           1
+----------+-----------------------------------
+96        |
+        0 |   .5436887    .4756916    .4567778
+        1 |   .8629903    .8681205           1
+----------+-----------------------------------
+97        |
+        0 |   .5425292    .4705436    .4579279
+        1 |   .8929174    .8921331           1
+----------+-----------------------------------
+98        |
+        0 |   .5370615    .4594727    .4465958
+        1 |     .91167    .9077613           1
+----------+-----------------------------------
+99        |
+        0 |   .5411282    .4645921    .4520445
+        1 |   .8912854    .8837702           1
+----------+-----------------------------------
+2001      |
+        0 |   .5263142    .4486704    .4364718
+        1 |   .8897734    .8846938           1
+----------+-----------------------------------
+2002      |
+        0 |   .5303982    .4563932    .4742498
+        1 |   .8718856    .8680912           1
+----------+-----------------------------------
+2003      |
+        0 |    .519417    .4435482    .4702148
+        1 |   .8529598    .8460839           1
+----------+-----------------------------------
+2004      |
+        0 |    .540118     .447852    .4756113
+        1 |   .8480108    .8426231           1
+----------+-----------------------------------
+2014      |
+        0 |   .4605076    .3294089    .4176905
+        1 |   .8202239    .8145531           1
+----------------------------------------------
+
+. 
+end of do-file
+
+. do "C:\Users\JULIAS~1\AppData\Local\Temp\STD01000000.tmp"
+
+. 
+. * -------------- TABELA 3 --------------
+. * 1992
+. corr infA infB infC if ano==92 [fw=peso] 
+(obs=59258143)
+
+             |     infA     infB     infC
+-------------+---------------------------
+        infA |   1.0000
+        infB |   0.8086   1.0000
+        infC |   0.6839   0.6315   1.0000
+
+
+. * 2004
+. corr infA infB infC if  ano==2004 [fw=peso]
+(obs=84790203)
+
+             |     infA     infB     infC
+-------------+---------------------------
+        infA |   1.0000
+        infB |   0.7827   1.0000
+        infC |   0.6616   0.5969   1.0000
+
+
+. 
+end of do-file
+
+. do "C:\Users\JULIAS~1\AppData\Local\Temp\STD01000000.tmp"
+
+. * -------------- DIAGRAMA DE VENN --------------
+. ssc install venndiag, replace // instalando comando (so rodar uma vez)
+checking venndiag consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. *comando
+. venndiag infA infB infC if ano==92
+______________________________________________________________________
+
+Venn diagram of variables: infA infB infC
+File: \Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\basetudo.dta (18 Sep 2019 )
+
+     Outcome    Variable and label 
+A:       1           infA    infA
+B:       1           infB    infB
+C:       1           infC    infC
+
+    1857020   Records in file
+    1728046   Records excluded by [in/if] clauses
+         48   Records excluded by missing values
+    _______
+     128926   Records in Diagram: 
+Counts for combined variables:
+----------------------------------------------------------------------
+A      |   4984    4 %  (infA == 1)& (infB != 1)& (infC != 1)
+B      |   1790    1 %  (infA != 1)& (infB == 1)& (infC != 1)
+C      |   4839    4 %  (infA != 1)& (infB != 1)& (infC == 1)
+AB     |  11515    9 %  (infA == 1)& (infB == 1)& (infC != 1)
+AC     |   5840    5 %  (infA == 1)& (infB != 1)& (infC == 1)
+BC     |    196    0 %  (infA != 1)& (infB == 1)& (infC == 1)
+ABC    |  47268   37 %  (infA == 1)& (infB == 1)& (infC == 1)
+---    |  52494   41 %  (infA != 1)& (infB != 1)& (infC != 1)
+----------------------------------------------------------------------
+______________________________________________________________________
+file C:\Users\JULIAS~1\AppData\Local\Temp\ST_01000006.tmp saved
+obs was 0, now 1001
+file C:\Users\JULIAS~1\AppData\Local\Temp\ST_01000006.tmp saved
+obs was 0, now 1001
+file C:\Users\JULIAS~1\AppData\Local\Temp\ST_01000006.tmp saved
+obs was 0, now 1001
+
+. venndiag infA infB infC if ano==2004
+______________________________________________________________________
+
+Venn diagram of variables: infA infB infC
+File: \Mac\Home\Desktop\MICRO IV\TRAB 2\STATA\Dados limpos\basetudo.dta (18 Sep 2019 )
+
+     Outcome    Variable and label 
+A:       1           infA    infA
+B:       1           infB    infB
+C:       1           infC    infC
+
+    1857020   Records in file
+    1672784   Records excluded by [in/if] clauses
+         42   Records excluded by missing values
+    _______
+     184194   Records in Diagram: 
+Counts for combined variables:
+----------------------------------------------------------------------
+A      |   7422    4 %  (infA == 1)& (infB != 1)& (infC != 1)
+B      |   1917    1 %  (infA != 1)& (infB == 1)& (infC != 1)
+C      |   9505    5 %  (infA != 1)& (infB != 1)& (infC == 1)
+AB     |  14154    8 %  (infA == 1)& (infB == 1)& (infC != 1)
+AC     |  10954    6 %  (infA == 1)& (infB != 1)& (infC == 1)
+BC     |    529    0 %  (infA != 1)& (infB == 1)& (infC == 1)
+ABC    |  69020   37 %  (infA == 1)& (infB == 1)& (infC == 1)
+---    |  70693   38 %  (infA != 1)& (infB != 1)& (infC != 1)
+----------------------------------------------------------------------
+______________________________________________________________________
+file C:\Users\JULIAS~1\AppData\Local\Temp\ST_01000006.tmp saved
+obs was 0, now 1001
+file C:\Users\JULIAS~1\AppData\Local\Temp\ST_01000006.tmp saved
+obs was 0, now 1001
+file C:\Users\JULIAS~1\AppData\Local\Temp\ST_01000006.tmp saved
+obs was 0, now 1001
+
+. 
+end of do-file
+
+. do "C:\Users\JULIAS~1\AppData\Local\Temp\STD01000000.tmp"
+
+. 
+. * -------------- TABELAS 4 e 5 --------------
+. *SEXO - Tabela 4
+. table feminino if ano==92, c(mean infA mean infB mean infC) 
+
+----------------------------------------------
+ feminino | mean(infA)  mean(infB)  mean(infC)
+----------+-----------------------------------
+        0 |   .5310907    .4448443    .4008967
+        1 |   .5530099    .5102615    .5242698
+----------------------------------------------
+
+. table feminino if ano==98, c(mean infA mean infB mean infC) 
+
+----------------------------------------------
+ feminino | mean(infA)  mean(infB)  mean(infC)
+----------+-----------------------------------
+        0 |   .5454236    .4633923    .4212446
+        1 |   .5235919    .4648893    .4907542
+----------------------------------------------
+
+. table feminino if ano==2004, c(mean infA mean infB mean infC) 
+
+----------------------------------------------
+ feminino | mean(infA)  mean(infB)  mean(infC)
+----------+-----------------------------------
+        0 |   .5560079    .4671525    .4677973
+        1 |   .5453592    .4618479    .5150285
+----------------------------------------------
+
+. 
+. *BRANCA - Tabela 5
+. table branca if ano==92, c(mean infA mean infB mean infC)  
+
+----------------------------------------------
+   branca | mean(infA)  mean(infB)  mean(infC)
+----------+-----------------------------------
+        0 |   .5790057    .5448335    .4943869
+        1 |   .5054972    .4064613    .4124483
+----------------------------------------------
+
+. table branca if ano==98, c(mean infA mean infB mean infC)  
+
+----------------------------------------------
+   branca | mean(infA)  mean(infB)  mean(infC)
+----------+-----------------------------------
+        0 |   .5690149    .5291241    .4957518
+        1 |   .5063103    .4044247    .4088121
+----------------------------------------------
+
+. table branca if ano==2004, c(mean infA mean infB mean infC)
+
+----------------------------------------------
+   branca | mean(infA)  mean(infB)  mean(infC)
+----------+-----------------------------------
+        0 |   .5903708    .5250617    .5228401
+        1 |   .5091271    .3997222    .4515466
+----------------------------------------------
+
+. 
+. * -------------- Teste diferenca entre medias-------------
+. ***Gerando variavel para media
+. egen medinfA = mean(infA), by(feminino branca ano) 
+
+. egen medinfB = mean(infB), by(feminino branca ano)
+
+. egen medinfC = mean(infC), by(feminino branca ano)
+
+. 
+. * SEXO
+. ***Fazendo teste
+. ttest medinfA if ano==92 , by(feminino) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   76728    .5310904    .0001068     .029578    .5308811    .5312997
+       1 |   52246     .553009    .0002084    .0476427    .5526005    .5534175
+---------+--------------------------------------------------------------------
+combined |  128974    .5399694    .0001098    .0394425    .5397541    .5401847
+---------+--------------------------------------------------------------------
+    diff |           -.0219186    .0002152               -.0223405   -.0214968
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t = -1.0e+02
+Ho: diff = 0                                     degrees of freedom =   128972
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 1.0000
+
+. ttest medinfA if ano==98 , by(feminino) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   85283    .5454254    .0000842    .0246027    .5452603    .5455905
+       1 |   61487    .5235947    .0001621    .0402037    .5232769    .5239125
+---------+--------------------------------------------------------------------
+combined |  146770    .5362798    .0000883    .0338358    .5361067    .5364529
+---------+--------------------------------------------------------------------
+    diff |            .0218307    .0001697                .0214981    .0221633
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t = 128.6460
+Ho: diff = 0                                     degrees of freedom =   146768
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 0.0000
+
+. ttest medinfA if ano==2004 , by(feminino) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |  103190     .556008    .0001034    .0332183    .5558054    .5562107
+       1 |   81046    .5453573    .0001745    .0496707    .5450153    .5456992
+---------+--------------------------------------------------------------------
+combined |  184236    .5513227    .0000969    .0416089    .5511327    .5515127
+---------+--------------------------------------------------------------------
+    diff |            .0106508    .0001937                .0102711    .0110304
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =  54.9826
+Ho: diff = 0                                     degrees of freedom =   184234
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 0.0000
+
+. 
+. ttest medinfB if ano==92 , by(feminino) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   76728    .4448478    .0002626    .0727286    .4443332    .4453624
+       1 |   52246    .5102653    .0002849    .0651146    .5097069    .5108236
+---------+--------------------------------------------------------------------
+combined |  128974    .4713477    .0002138    .0767827    .4709287    .4717668
+---------+--------------------------------------------------------------------
+    diff |           -.0654175    .0003956               -.0661929   -.0646421
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t = -1.7e+02
+Ho: diff = 0                                     degrees of freedom =   128972
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 1.0000
+
+. ttest medinfB if ano==98 , by(feminino) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   85283    .4633971    .0002185    .0638199    .4629688    .4638254
+       1 |   61487    .4648939    .0002429    .0602194    .4644179    .4653699
+---------+--------------------------------------------------------------------
+combined |  146770    .4640242    .0001627     .062341    .4637052    .4643431
+---------+--------------------------------------------------------------------
+    diff |           -.0014968    .0003298               -.0021432   -.0008504
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =  -4.5385
+Ho: diff = 0                                     degrees of freedom =   146768
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 1.0000
+
+. ttest medinfB if ano==2004 , by(feminino) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |  103190    .4671531    .0001947    .0625592    .4667714    .4675348
+       1 |   81046    .4618494    .0002199    .0625946    .4614185    .4622804
+---------+--------------------------------------------------------------------
+combined |  184236      .46482    .0001459      .06263     .464534     .465106
+---------+--------------------------------------------------------------------
+    diff |            .0053037    .0002937                 .004728    .0058793
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =  18.0581
+Ho: diff = 0                                     degrees of freedom =   184234
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 0.0000
+
+. 
+. ttest medinfC if ano==92, by(feminino) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   76728    .4008967    .0001144     .031675    .4006725    .4011208
+       1 |   52246    .5242698    .0002502    .0571948    .5237794    .5247602
+---------+--------------------------------------------------------------------
+combined |  128974    .4508738    .0002082    .0747673    .4504658    .4512819
+---------+--------------------------------------------------------------------
+    diff |           -.1233731    .0002487               -.1238605   -.1228857
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t = -5.0e+02
+Ho: diff = 0                                     degrees of freedom =   128972
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 1.0000
+
+. ttest medinfC if ano==98, by(feminino) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   85283    .4212446    .0001216     .035514    .4210062    .4214829
+       1 |   61487    .4907541    .0002255    .0559256    .4903121    .4911962
+---------+--------------------------------------------------------------------
+combined |  146770    .4503645    .0001481    .0567388    .4500742    .4506548
+---------+--------------------------------------------------------------------
+    diff |           -.0695096    .0002391               -.0699783   -.0690409
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t = -2.9e+02
+Ho: diff = 0                                     degrees of freedom =   146768
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 1.0000
+
+. ttest medinfC if ano==2004, by(feminino) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |  103190    .4677973    .0000747    .0239942    .4676509    .4679437
+       1 |   81046    .5150285    .0001822    .0518596    .5146715    .5153856
+---------+--------------------------------------------------------------------
+combined |  184236    .4885744    .0001056    .0453341    .4883674    .4887814
+---------+--------------------------------------------------------------------
+    diff |           -.0472312    .0001821               -.0475882   -.0468743
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t = -2.6e+02
+Ho: diff = 0                                     degrees of freedom =   184234
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 0.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 1.0000
+
+. 
+. * BRANCA
+. ***Fazendo teste
+. ttest medinfA if ano==92, by(branca) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   60483    .5790057     .000085    .0209007    .5788391    .5791723
+       1 |   68491    .5054972    .0000119    .0031229    .5054738    .5055206
+---------+--------------------------------------------------------------------
+combined |  128974    .5399694    .0001098    .0394425    .5397541    .5401847
+---------+--------------------------------------------------------------------
+    diff |            .0735085    .0000809                  .07335     .073667
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t = 909.0167
+Ho: diff = 0                                     degrees of freedom =   128972
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 0.0000
+
+. ttest medinfA if ano==98, by(branca) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   70148    .5690149    7.84e-06    .0020777    .5689996    .5690303
+       1 |   76622    .5063105    .0000636    .0176015    .5061858    .5064351
+---------+--------------------------------------------------------------------
+combined |  146770    .5362798    .0000883    .0338358    .5361067    .5364529
+---------+--------------------------------------------------------------------
+    diff |            .0627045    .0000669                .0625734    .0628355
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t = 937.5678
+Ho: diff = 0                                     degrees of freedom =   146768
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 0.0000
+
+. ttest medinfA if ano==2004, by(branca) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   95687    .5903706    .0000118    .0036643    .5903474    .5903938
+       1 |   88549    .5091272    .0000424    .0126306     .509044    .5092104
+---------+--------------------------------------------------------------------
+combined |  184236    .5513227    .0000969    .0416089    .5511327    .5515127
+---------+--------------------------------------------------------------------
+    diff |            .0812434    .0000426                .0811598     .081327
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =  1.9e+03
+Ho: diff = 0                                     degrees of freedom =   184234
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 0.0000
+
+. 
+. ttest medinfB if ano==92, by(branca) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   60483    .5448302    .0001193    .0293466    .5445964    .5450641
+       1 |   68491    .4064568     .000141    .0369065    .4061804    .4067332
+---------+--------------------------------------------------------------------
+combined |  128974    .4713477    .0002138    .0767827    .4709287    .4717668
+---------+--------------------------------------------------------------------
+    diff |            .1383734    .0001873                .1380062    .1387406
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t = 738.6417
+Ho: diff = 0                                     degrees of freedom =   128972
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 0.0000
+
+. ttest medinfB if ano==98, by(branca) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   70148    .5291241    2.09e-07    .0000554    .5291236    .5291245
+       1 |   76622    .4044247    .0000127    .0035165    .4043998    .4044496
+---------+--------------------------------------------------------------------
+combined |  146770    .4640242    .0001627     .062341    .4637052    .4643431
+---------+--------------------------------------------------------------------
+    diff |            .1246993    .0000133                .1246733    .1247253
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =  9.4e+03
+Ho: diff = 0                                     degrees of freedom =   146768
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 0.0000
+
+. ttest medinfB if ano==2004, by(branca) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   95687    .5250617    3.18e-06    .0009824    .5250554    .5250679
+       1 |   88549    .3997222    3.04e-06    .0009036    .3997162    .3997281
+---------+--------------------------------------------------------------------
+combined |  184236      .46482    .0001459      .06263     .464534     .465106
+---------+--------------------------------------------------------------------
+    diff |            .1253395    4.41e-06                .1253308    .1253481
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t =  2.8e+04
+Ho: diff = 0                                     degrees of freedom =   184234
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 0.0000
+
+. 
+. ttest medinfC if ano==92, by(branca) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   60483    .4943868     .000303    .0745167     .493793    .4949807
+       1 |   68491    .4124484    .0001901    .0497465    .4120758    .4128209
+---------+--------------------------------------------------------------------
+combined |  128974    .4508738    .0002082    .0747673    .4504658    .4512819
+---------+--------------------------------------------------------------------
+    diff |            .0819385    .0003493                .0812539    .0826231
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t = 234.6006
+Ho: diff = 0                                     degrees of freedom =   128972
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 0.0000
+
+. ttest medinfC if ano==98, by(branca) 
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   70148    .4957518    .0001721    .0455727    .4954146    .4960891
+       1 |   76622    .4088121    .0000923    .0255465    .4086312     .408993
+---------+--------------------------------------------------------------------
+combined |  146770    .4503645    .0001481    .0567388    .4500742    .4506548
+---------+--------------------------------------------------------------------
+    diff |            .0869397    .0001908                .0865657    .0873137
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t = 455.6322
+Ho: diff = 0                                     degrees of freedom =   146768
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 0.0000
+
+. ttest medinfC if ano==2004, by(branca)
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       0 |   95687    .5228401    .0001217    .0376546    .5226015    .5230787
+       1 |   88549    .4515466    .0000343    .0101985    .4514794    .4516138
+---------+--------------------------------------------------------------------
+combined |  184236    .4885744    .0001056    .0453341    .4883674    .4887814
+---------+--------------------------------------------------------------------
+    diff |            .0712935    .0001308                .0710372    .0715498
+------------------------------------------------------------------------------
+    diff = mean(0) - mean(1)                                      t = 545.2067
+Ho: diff = 0                                     degrees of freedom =   184234
+
+    Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 0.0000
+
+. 
+end of do-file
+
+. do "C:\Users\JULIAS~1\AppData\Local\Temp\STD01000000.tmp"
+
+. 
+. * -------------- TABELA 6 --------------
+. * --------------  global
+. global carac idade idadequad feminino indigena preta amarela parda 
+
+. global educ analfabeto primario sgrau superior mestrado 
+
+. global gerais urbano sindicato
+
+. global derivadas total_carteiras_fam total_autonomo total_crianca_fam total_idoso_fam renda_total_fam
+
+. global controles norte nordeste centro sul
+
+. global ocup9298 octec ocadm ocagro ocind occom octrans ocser
+
+. global ocup04 ocdir occa octnv ocsadm octs ocvend octagro ocprodbs ocfaa
+
+. global trabalho empregado cpsememp cpcomemp domestico naorem conpro // temp como referencia
+
+. 
+. * -------------- REGRESSÃO --------------
+. 
+. * -------------- SEM PESO --------------
+. 
+end of do-file
+
+. do "C:\Users\JULIAS~1\AppData\Local\Temp\STD01000000.tmp"
+
+. * -------------- SEM PESO --------------
+. 
+. * -------------- INFORMALIDADE TIPO A
+. *92
+. dprobit infA $carac $educ $gerais $derivadas $controles informalidadeconj $ocup9298 if ano==92
+
+Iteration 0:   log likelihood = -88983.272
+Iteration 1:   log likelihood = -58214.208
+Iteration 2:   log likelihood = -55504.555
+Iteration 3:   log likelihood = -55386.952
+Iteration 4:   log likelihood = -55386.536
+Iteration 5:   log likelihood = -55386.536
+
+Probit regression, reporting marginal effects           Number of obs = 128971
+                                                        LR chi2(31)   =67193.47
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -55386.536                             Pseudo R2     = 0.3776
+
+------------------------------------------------------------------------------
+    infA |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+   idade |  -.0108652   .0009414   -11.54   0.000   34.8586   -.01271  -.00902
+idadeq~d |   .0002088   .0000122    17.04   0.000   1354.89   .000185  .000233
+feminino*|  -.0168717   .0038969    -4.33   0.000   .405083  -.024509 -.009234
+indigena*|  -.0099274   .0659286    -0.15   0.880   .000806  -.139145   .11929
+   preta*|  -.0194224   .0075992    -2.56   0.010    .05868  -.034317 -.004528
+ amarela*|   .0875319   .0249266     3.38   0.001   .003784   .038677  .136387
+   parda*|  -.0158387   .0040034    -3.96   0.000   .405665  -.023685 -.007992
+analfa~o*|   .0620846   .0067302     9.08   0.000    .13876   .048894  .075276
+primario*|   .0229287   .0057186     4.01   0.000   .546053    .01172  .034137
+   sgrau*|  -.0254505   .0066317    -3.85   0.000   .203007  -.038448 -.012453
+superior*|   .0237165   .0086745     2.72   0.007   .072598   .006715  .040718
+mestrado*|   .0320141   .0324721     0.98   0.329   .002543   -.03163  .095658
+  urbano*|   .0205951   .0061265     3.37   0.001   .805848   .008587  .032603
+sindic~o*|  -.3284282    .004365   -68.99   0.000    .17942  -.336983 -.319873
+to~s_fam |  -.0864691   .0010082   -85.76   0.000   3.44231  -.088445 -.084493
+total_~o |   .0416362   .0013302    31.27   0.000   2.06893   .039029  .044243
+to~a_fam |   .0150532   .0004664    32.26   0.000   12.7014   .014139  .015967
+to~o_fam |   -.017935   .0017381   -10.32   0.000   .766242  -.021342 -.014528
+renda_~m |   3.77e-07   1.19e-07     3.15   0.002   1008.19   1.4e-07  6.1e-07
+   norte*|   .0769195   .0070302    10.65   0.000   .064456   .063141  .090698
+nordeste*|   .0479676   .0045579    10.45   0.000   .286297   .039034  .056901
+  centro*|    .057133   .0055812    10.08   0.000   .109862   .046194  .068072
+     sul*|   .0064565   .0045683     1.41   0.158   .207326  -.002497   .01541
+inform~j*|   .1184018   .0038284    30.87   0.000   .610153   .110898  .125905
+   octec*|   .1860722   .0065982    25.44   0.000   .078622    .17314  .199004
+   ocadm*|   .2673241   .0048619    46.84   0.000   .134712   .257795  .276853
+  ocagro*|   .5212537   .0030967    96.56   0.000   .193144   .515184  .527323
+   ocind*|   .3595792   .0038384    74.44   0.000   .179389   .352056  .367102
+   occom*|   .4349222   .0028447    91.27   0.000   .107652   .429347  .440498
+ octrans*|   .2283634   .0067107    28.53   0.000   .040257   .215211  .241516
+   ocser*|   .4201999   .0030261    83.28   0.000   .095587   .414269  .426131
+---------+--------------------------------------------------------------------
+  obs. P |   .5399741
+ pred. P |   .5718453  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. outreg2 using INF_A, append // exportando a regressao
+dir : seeout
+
+. 
+. *testes
+. estat gof
+
+Probit model for infA, goodness-of-fit test
+
+       number of observations =    128971
+ number of covariate patterns =    127416
+         Pearson chi2(127384) =    345979.02
+                  Prob > chi2 =         0.0000
+
+. 
+. estat gof, group(15) //table
+
+Probit model for infA, goodness-of-fit test
+
+  (Table collapsed on quantiles of estimated probabilities)
+
+       number of observations =    128971
+             number of groups =        15
+     Hosmer-Lemeshow chi2(13) =       322.78
+                  Prob > chi2 =         0.0000
+
+. 
+. estat classification, cutoff(0.54) // colocar a media da informalidade de cada tipo
+
+Probit model for infA
+
+              -------- True --------
+Classified |         D            ~D  |      Total
+-----------+--------------------------+-----------
+     +     |     55541         11300  |      66841
+     -     |     14100         48030  |      62130
+-----------+--------------------------+-----------
+   Total   |     69641         59330  |     128971
+
+Classified + if predicted Pr(D) >= .54
+True D defined as infA != 0
+--------------------------------------------------
+Sensitivity                     Pr( +| D)   79.75%
+Specificity                     Pr( -|~D)   80.95%
+Positive predictive value       Pr( D| +)   83.09%
+Negative predictive value       Pr(~D| -)   77.31%
+--------------------------------------------------
+False + rate for true ~D        Pr( +|~D)   19.05%
+False - rate for true D         Pr( -| D)   20.25%
+False + rate for classified +   Pr(~D| +)   16.91%
+False - rate for classified -   Pr( D| -)   22.69%
+--------------------------------------------------
+Correctly classified                        80.31%
+--------------------------------------------------
+
+.         lsens
+
+.         lroc
+
+Probit model for infA
+
+number of observations =   128971
+area under ROC curve   =   0.8835
+
+. 
+. predict res92A, deviance
+(1728049 missing values generated)
+
+. 
+. qnorm res92A
+
+. 
+. pnorm res92A
+
+. 
+. *98
+. dprobit infA $carac $educ $gerais $derivadas $controles informalidadeconj $ocup9298 if ano==98 
+
+Iteration 0:   log likelihood = -101317.63
+Iteration 1:   log likelihood = -63308.605
+Iteration 2:   log likelihood = -58809.166
+Iteration 3:   log likelihood = -58563.161
+Iteration 4:   log likelihood = -58561.949
+Iteration 5:   log likelihood = -58561.949
+
+Probit regression, reporting marginal effects           Number of obs = 146730
+                                                        LR chi2(31)   =85511.36
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -58561.949                             Pseudo R2     = 0.4220
+
+------------------------------------------------------------------------------
+    infA |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+   idade |  -.0161784    .000923   -17.52   0.000   35.4296  -.017987 -.014369
+idadeq~d |   .0002766    .000012    23.07   0.000   1394.22   .000253    .0003
+feminino*|  -.0323141   .0037792    -8.56   0.000    .41898  -.039721 -.024907
+indigena*|   .0030255   .0338998     0.09   0.929   .002549  -.063417  .069468
+   preta*|  -.0161068   .0070194    -2.30   0.021   .064349  -.029865 -.002349
+ amarela*|   .1084031   .0220176     4.68   0.000   .004478   .065249  .151557
+   parda*|  -.0137286   .0038704    -3.55   0.000   .406386  -.021314 -.006143
+analfa~o*|   .0729317   .0069211    10.32   0.000   .107013   .059367  .086497
+primario*|   .0201877   .0053361     3.78   0.000   .501813   .009729  .030646
+   sgrau*|  -.0375073   .0059592    -6.31   0.000   .236714  -.049187 -.025827
+superior*|   .0144039   .0079927     1.80   0.072   .080181  -.001261  .030069
+mestrado*|  -.0231237   .0265685    -0.87   0.382   .003721  -.075197   .02895
+  urbano*|  -.0031718   .0057165    -0.55   0.579   .821638  -.014376  .008032
+sindic~o*|  -.3155128    .004442   -65.03   0.000   .159429  -.324219 -.306807
+to~s_fam |  -.2025684   .0016107  -125.94   0.000   1.73511  -.205725 -.199411
+total_~o |   .0897066   .0019866    45.12   0.000   .952416   .085813    .0936
+to~a_fam |   .0428827   .0007325    58.54   0.000   5.80812   .041447  .044318
+to~o_fam |  -.0479075   .0027708   -17.29   0.000   .298501  -.053338 -.042477
+renda_~m |   .0001239   .0000441     2.81   0.005   1.89797   .000037   .00021
+   norte*|    .073139    .006722    10.63   0.000   .069509   .059964  .086314
+nordeste*|   .0567485   .0043442    12.96   0.000   .297976   .048234  .065263
+  centro*|   .0237583   .0054298     4.35   0.000   .112676   .013116    .0344
+     sul*|   .0022134   .0044704     0.49   0.621   .201527  -.006548  .010975
+inform~j*|   .1701063    .003662    45.36   0.000   .408328   .162929  .177284
+   octec*|   .2266371   .0056976    34.64   0.000   .085981    .21547  .237804
+   ocadm*|   .2489803   .0048438    44.55   0.000   .121782   .239487  .258474
+  ocagro*|   .4769283   .0031524    86.32   0.000   .154576    .47075  .483107
+   ocind*|   .3533086   .0036972    76.46   0.000   .174334   .346062  .360555
+   occom*|   .4054486   .0031804    83.68   0.000   .113774   .399215  .411682
+ octrans*|   .2549413   .0059691    34.57   0.000     .0416   .243242  .266641
+   ocser*|    .394406   .0033195    79.62   0.000   .105691     .3879  .400912
+---------+--------------------------------------------------------------------
+  obs. P |   .5363389
+ pred. P |   .5657504  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. outreg2 using INF_A, append
+dir : seeout
+
+.  
+. *testes
+. estat gof
+
+Probit model for infA, goodness-of-fit test
+
+       number of observations =    146730
+ number of covariate patterns =    135084
+         Pearson chi2(135052) =  11672977.47
+                  Prob > chi2 =         0.0000
+
+. 
+. estat gof, group(10) //table
+
+Probit model for infA, goodness-of-fit test
+
+  (Table collapsed on quantiles of estimated probabilities)
+
+       number of observations =    146730
+             number of groups =        10
+      Hosmer-Lemeshow chi2(8) =      1536.14
+                  Prob > chi2 =         0.0000
+
+. 
+. estat classification, cutoff(0.536) // colocar a media da informalidade de cada tipo
+
+Probit model for infA
+
+              -------- True --------
+Classified |         D            ~D  |      Total
+-----------+--------------------------+-----------
+     +     |     65329         11419  |      76748
+     -     |     13368         56614  |      69982
+-----------+--------------------------+-----------
+   Total   |     78697         68033  |     146730
+
+Classified + if predicted Pr(D) >= .536
+True D defined as infA != 0
+--------------------------------------------------
+Sensitivity                     Pr( +| D)   83.01%
+Specificity                     Pr( -|~D)   83.22%
+Positive predictive value       Pr( D| +)   85.12%
+Negative predictive value       Pr(~D| -)   80.90%
+--------------------------------------------------
+False + rate for true ~D        Pr( +|~D)   16.78%
+False - rate for true D         Pr( -| D)   16.99%
+False + rate for classified +   Pr(~D| +)   14.88%
+False - rate for classified -   Pr( D| -)   19.10%
+--------------------------------------------------
+Correctly classified                        83.11%
+--------------------------------------------------
+
+.         lsens
+
+.         lroc
+
+Probit model for infA
+
+number of observations =   146730
+area under ROC curve   =   0.9050
+
+. 
+. predict res98A, deviance
+(1710290 missing values generated)
+
+. 
+. qnorm res98A
+
+. 
+. pnorm res98A
+
+.  
+. *2004
+. dprobit infA $carac $educ $gerais $derivadas $controles informalidadeconj $ocup04 if ano==2004 
+
+Iteration 0:   log likelihood = -126700.77
+Iteration 1:   log likelihood = -94099.918
+Iteration 2:   log likelihood = -91728.938
+Iteration 3:   log likelihood = -91662.501
+Iteration 4:   log likelihood = -91662.408
+
+Probit regression, reporting marginal effects           Number of obs = 184193
+                                                        LR chi2(33)   =70076.72
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -91662.408                             Pseudo R2     = 0.2765
+
+------------------------------------------------------------------------------
+    infA |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+   idade |  -.0220501   .0007496   -29.41   0.000   35.8307  -.023519 -.020581
+idadeq~d |   .0003302   9.68e-06    34.10   0.000   1425.92   .000311  .000349
+feminino*|   .0672259   .0028923    23.13   0.000   .439924   .061557  .072895
+indigena*|   .0139644   .0288165     0.48   0.629   .002101  -.042515  .070444
+   preta*|  -.0187658   .0054549    -3.45   0.001   .068977  -.029457 -.008074
+ amarela*|   .1392867    .018985     6.74   0.000   .003659   .102077  .176497
+   parda*|  -.0033441   .0030729    -1.09   0.276   .444593  -.009367  .002679
+analfa~o*|   .0762695    .005948    12.48   0.000   .086599   .064612  .087927
+primario*|   .0418752   .0042678     9.79   0.000   .435511   .033511   .05024
+   sgrau*|  -.0440206   .0043707   -10.10   0.000   .292411  -.052587 -.035454
+superior*|  -.0654504   .0064098   -10.28   0.000   .088353  -.078013 -.052888
+mestrado*|  -.1908421   .0191891    -9.66   0.000   .005103  -.228452 -.153232
+  urbano*|   .0295135   .0051687     5.73   0.000   .840358   .019383  .039644
+sindic~o*|  -.3395772     .00353   -87.63   0.000   .168437  -.346496 -.332658
+to~s_fam |  -.0509643   .0005811   -87.55   0.000   4.94969  -.052103 -.049825
+total_~o |   .0207908   .0008006    25.95   0.000   3.02155   .019222   .02236
+to~a_fam |   .0095556   .0002931    32.58   0.000   17.6312   .008981   .01013
+to~o_fam |  -.0115587   .0009978   -11.58   0.000   1.25194  -.013514 -.009603
+renda_~m |   .0000857   .0000144     5.93   0.000   8.61793   .000057  .000114
+   norte*|   .0376621   .0046601     8.01   0.000   .125102   .028529  .046796
+nordeste*|    .054128   .0035538    15.11   0.000   .300739   .047163  .061093
+  centro*|   .0098945   .0044166     2.24   0.025   .110667   .001238  .018551
+     sul*|  -.0074647   .0037825    -1.98   0.048    .18378  -.014878 -.000051
+inform~j*|   .1275566   .0032625    39.14   0.000   .725798   .121162  .133951
+   ocdir*|    .377508   .0030189    68.43   0.000    .04719   .371591  .383425
+    occa*|   .2794048   .0050332    42.60   0.000   .058227    .26954   .28927
+   octnv*|   .2531139   .0047631    43.37   0.000   .069769   .243778  .262449
+  ocsadm*|   .0839403   .0063308    12.85   0.000   .077088   .071532  .096348
+    octs*|   .2958173   .0040711    61.74   0.000   .191131   .287838  .303797
+  ocvend*|   .3761145   .0030598    78.47   0.000   .091008   .370117  .382112
+ octagro*|   .4891377   .0027043    96.83   0.000   .157889   .483837  .494438
+ocprodbs*|   .3400354   .0039354    70.90   0.000   .210117   .332322  .347749
+   ocfaa*|  -.1912114   .0194032    -9.57   0.000   .008871  -.229241 -.153182
+---------+--------------------------------------------------------------------
+  obs. P |   .5513239
+ pred. P |   .5784806  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. outreg2 using INF_A, append
+dir : seeout
+
+. 
+. *testes
+. estat gof
+
+Probit model for infA, goodness-of-fit test
+
+       number of observations =    184193
+ number of covariate patterns =    182578
+         Pearson chi2(182544) =    467995.52
+                  Prob > chi2 =         0.0000
+
+. 
+. estat gof, group(15) //table
+
+Probit model for infA, goodness-of-fit test
+
+  (Table collapsed on quantiles of estimated probabilities)
+
+       number of observations =    184193
+             number of groups =        15
+     Hosmer-Lemeshow chi2(13) =       349.36
+                  Prob > chi2 =         0.0000
+
+. 
+. estat classification, cutoff(0.55) // colocar a media da informalidade de cada tipo
+
+Probit model for infA
+
+              -------- True --------
+Classified |         D            ~D  |      Total
+-----------+--------------------------+-----------
+     +     |     76883         20118  |      97001
+     -     |     24667         62525  |      87192
+-----------+--------------------------+-----------
+   Total   |    101550         82643  |     184193
+
+Classified + if predicted Pr(D) >= .55
+True D defined as infA != 0
+--------------------------------------------------
+Sensitivity                     Pr( +| D)   75.71%
+Specificity                     Pr( -|~D)   75.66%
+Positive predictive value       Pr( D| +)   79.26%
+Negative predictive value       Pr(~D| -)   71.71%
+--------------------------------------------------
+False + rate for true ~D        Pr( +|~D)   24.34%
+False - rate for true D         Pr( -| D)   24.29%
+False + rate for classified +   Pr(~D| +)   20.74%
+False - rate for classified -   Pr( D| -)   28.29%
+--------------------------------------------------
+Correctly classified                        75.69%
+--------------------------------------------------
+
+.         lsens
+
+.         lroc
+
+Probit model for infA
+
+number of observations =   184193
+area under ROC curve   =   0.8361
+
+.         
+. predict res04A, deviance
+(1672827 missing values generated)
+
+. 
+. qnorm res04A
+
+. 
+. pnorm res04A
+
+. 
+. *2014
+. dprobit infA $carac $educ $gerais $derivadas $controles informalidadeconj $ocup04 if ano==2014 
+
+Iteration 0:   log likelihood = -122093.69
+Iteration 1:   log likelihood = -92243.143
+Iteration 2:   log likelihood = -90346.721
+Iteration 3:   log likelihood = -90315.585
+Iteration 4:   log likelihood = -90315.571
+
+Probit regression, reporting marginal effects           Number of obs = 176687
+                                                        LR chi2(33)   =63556.24
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -90315.571                             Pseudo R2     = 0.2603
+
+------------------------------------------------------------------------------
+    infA |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+   idade |  -.0137984   .0007444   -18.54   0.000   37.8778  -.015257 -.012339
+idadeq~d |   .0002336   9.28e-06    25.18   0.000   1584.97   .000215  .000252
+feminino*|   .0700873   .0030455    22.98   0.000   .446139   .064118  .076056
+indigena*|   .0449267   .0218462     2.06   0.039   .004437   .002109  .087744
+   preta*|  -.0259891   .0048141    -5.38   0.000   .101252  -.035425 -.016554
+ amarela*|   .0481046   .0210083     2.29   0.022   .004137   .006929   .08928
+   parda*|  -.0146473   .0031377    -4.67   0.000   .465699  -.020797 -.008498
+analfa~o*|   .0904785   .0077559    11.61   0.000   .048345   .075277   .10568
+primario*|   .0310656   .0046315     6.71   0.000    .32913   .021988  .040143
+   sgrau*|  -.0629675   .0043722   -14.33   0.000   .358413  -.071537 -.054398
+superior*|   -.105823   .0053154   -19.43   0.000   .156265  -.116241 -.095405
+mestrado*|  -.2241578   .0129816   -14.76   0.000   .008076  -.249601 -.198714
+  urbano*|   .0066725   .0051409     1.30   0.195   .865582  -.003403  .016748
+sindic~o*|  -.2716454   .0034055   -69.66   0.000   .158359   -.27832 -.264971
+to~s_fam |  -.0572761   .0006554   -87.36   0.000   5.17161  -.058561 -.055992
+total_~o |    .037373   .0009641    38.77   0.000   2.29481   .035483  .039263
+to~a_fam |   .0136169   .0003712    36.69   0.000    14.739   .012889  .014344
+to~o_fam |  -.0152381   .0010261   -14.85   0.000   1.32923  -.017249 -.013227
+renda_~m |   .0000406   7.20e-06     5.64   0.000    13.968   .000026  .000055
+   norte*|   .0604668   .0044941    13.46   0.000   .149502   .051658  .069275
+nordeste*|   .0617759   .0037252    16.59   0.000   .273744   .054475  .069077
+  centro*|   .0018724   .0045711     0.41   0.682   .109176  -.007087  .010832
+     sul*|  -.0317493   .0039122    -8.08   0.000   .181072  -.039417 -.024082
+inform~j*|   .1225803    .003051    39.57   0.000   .651067     .1166   .12856
+   ocdir*|   .4316085   .0048755    59.38   0.000   .049053   .422053  .441164
+    occa*|   .3378644   .0062675    45.73   0.000   .091688    .32558  .350148
+   octnv*|   .2869535   .0066441    38.33   0.000    .06803   .273931  .299976
+  ocsadm*|   .0273505   .0078004     3.51   0.000   .093951   .012062  .042639
+    octs*|   .3334084   .0056745    52.82   0.000    .19062   .322287   .34453
+  ocvend*|   .3944637   .0051093    60.25   0.000   .091812    .38445  .404478
+ octagro*|   .5469225   .0035353    83.62   0.000     .1129   .539994  .553852
+ocprodbs*|   .3795712   .0055485    60.17   0.000   .226576   .368696  .390446
+   ocfaa*|   .2167079    .014001    14.38   0.000   .009242   .189266  .244149
+---------+--------------------------------------------------------------------
+  obs. P |   .4673745
+ pred. P |   .4600429  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. outreg2 using INF_A, append
+dir : seeout
+
+. 
+. *testes
+. estat gof
+
+Probit model for infA, goodness-of-fit test
+
+       number of observations =    176687
+ number of covariate patterns =    175627
+         Pearson chi2(175593) =    336294.15
+                  Prob > chi2 =         0.0000
+
+. 
+. estat gof, group(15) //table
+
+Probit model for infA, goodness-of-fit test
+
+  (Table collapsed on quantiles of estimated probabilities)
+
+       number of observations =    176687
+             number of groups =        15
+     Hosmer-Lemeshow chi2(13) =       464.15
+                  Prob > chi2 =         0.0000
+
+. 
+. estat classification, cutoff(0.4673) // colocar a media da informalidade de cada tipo
+
+Probit model for infA
+
+              -------- True --------
+Classified |         D            ~D  |      Total
+-----------+--------------------------+-----------
+     +     |     62230         23935  |      86165
+     -     |     20349         70173  |      90522
+-----------+--------------------------+-----------
+   Total   |     82579         94108  |     176687
+
+Classified + if predicted Pr(D) >= .4673
+True D defined as infA != 0
+--------------------------------------------------
+Sensitivity                     Pr( +| D)   75.36%
+Specificity                     Pr( -|~D)   74.57%
+Positive predictive value       Pr( D| +)   72.22%
+Negative predictive value       Pr(~D| -)   77.52%
+--------------------------------------------------
+False + rate for true ~D        Pr( +|~D)   25.43%
+False - rate for true D         Pr( -| D)   24.64%
+False + rate for classified +   Pr(~D| +)   27.78%
+False - rate for classified -   Pr( D| -)   22.48%
+--------------------------------------------------
+Correctly classified                        74.94%
+--------------------------------------------------
+
+.         lsens
+
+.         lroc
+
+Probit model for infA
+
+number of observations =   176687
+area under ROC curve   =   0.8271
+
+.         
+. predict res14A, deviance
+(1680333 missing values generated)
+
+. 
+. qnorm res14A
+
+. 
+. pnorm res14A
+
+. 
+. * -------------- INFORMALIDADE TIPO B
+. *92
+. dprobit infB $carac $educ $gerais $derivadas $controles informalidadeconj $ocup9298 if ano==92  
+
+Iteration 0:   log likelihood = -89152.258
+Iteration 1:   log likelihood = -59007.146
+Iteration 2:   log likelihood = -56547.717
+Iteration 3:   log likelihood = -56452.106
+Iteration 4:   log likelihood = -56451.842
+Iteration 5:   log likelihood = -56451.842
+
+Probit regression, reporting marginal effects           Number of obs = 128925
+                                                        LR chi2(31)   =65400.83
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -56451.842                             Pseudo R2     = 0.3668
+
+------------------------------------------------------------------------------
+    infB |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+   idade |  -.0214549   .0009191   -23.34   0.000   34.8583  -.023256 -.019653
+idadeq~d |   .0002757   .0000119    23.26   0.000   1354.88   .000252  .000299
+feminino*|   .0530964   .0038972    13.62   0.000   .405143   .045458  .060735
+indigena*|   .0271821    .065436     0.42   0.678   .000807   -.10107  .155434
+   preta*|   .0169555    .007542     2.25   0.024   .058701   .002173  .031738
+ amarela*|  -.0529323   .0277624    -1.89   0.059   .003785  -.107346  .001481
+   parda*|   .0215464   .0039732     5.42   0.000   .405608   .013759  .029334
+analfa~o*|   .0988423   .0066975    14.66   0.000   .138794   .085715  .111969
+primario*|   .0054557   .0056393     0.97   0.333   .546031  -.005597  .016509
+   sgrau*|   -.061255   .0065126    -9.33   0.000   .202963  -.074019 -.048491
+superior*|  -.0881126   .0091876    -9.39   0.000   .072608   -.10612 -.070105
+mestrado*|  -.0871654    .040236    -2.11   0.035   .002536  -.166026 -.008304
+  urbano*|  -.0284288   .0059213    -4.80   0.000   .805872  -.040034 -.016823
+sindic~o*|   -.315451   .0041257   -64.88   0.000   .179469  -.323537 -.307365
+to~s_fam |  -.0718073   .0009941   -72.23   0.000   3.44284  -.073756 -.069859
+total_~o |   .0137159   .0012845    10.68   0.000    2.0693   .011198  .016233
+to~a_fam |   .0147989   .0004586    32.27   0.000   12.7033     .0139  .015698
+to~o_fam |  -.0126584   .0017462    -7.25   0.000   .766353  -.016081 -.009236
+renda_~m |   1.32e-07   1.27e-07     1.04   0.299   1008.24  -1.2e-07  3.8e-07
+   norte*|   .1749433   .0068955    24.39   0.000   .064456   .161428  .188458
+nordeste*|   .1211903   .0045642    26.36   0.000   .286151   .112245  .130136
+  centro*|   .1144196   .0056446    20.05   0.000    .10987   .103356  .125483
+     sul*|   .0179216   .0046561     3.85   0.000     .2074   .008796  .027047
+inform~j*|   .1068981   .0038214    27.71   0.000   .610223   .099408  .114388
+   octec*|   .0955369   .0080922    11.72   0.000   .078635   .079676  .111397
+   ocadm*|    .051419   .0066271     7.76   0.000   .134737    .03843  .064408
+  ocagro*|   .5606267   .0038013    93.79   0.000   .193213   .553176  .568077
+   ocind*|   .3247306   .0047521    61.19   0.000    .17936   .315417  .334044
+   occom*|   .3494064   .0048613    60.28   0.000   .107628   .339878  .358934
+ octrans*|    .144033   .0090848    15.44   0.000   .040217   .126227  .161839
+   ocser*|   .4200928   .0044494    69.78   0.000   .095598   .411372  .428813
+---------+--------------------------------------------------------------------
+  obs. P |   .4713516
+ pred. P |   .4703022  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. outreg2 using INF_B, append
+dir : seeout
+
+. 
+. *testes
+. estat gof
+
+Probit model for infB, goodness-of-fit test
+
+       number of observations =    128925
+ number of covariate patterns =    127371
+         Pearson chi2(127339) =    152190.51
+                  Prob > chi2 =         0.0000
+
+. 
+. estat gof, group(15) //table
+
+Probit model for infB, goodness-of-fit test
+
+  (Table collapsed on quantiles of estimated probabilities)
+
+       number of observations =    128925
+             number of groups =        15
+     Hosmer-Lemeshow chi2(13) =       390.09
+                  Prob > chi2 =         0.0000
+
+. 
+. estat classification, cutoff(0.47) // colocar a media da informalidade de cada tipo
+
+Probit model for infB
+
+              -------- True --------
+Classified |         D            ~D  |      Total
+-----------+--------------------------+-----------
+     +     |     48110         13492  |      61602
+     -     |     12659         54664  |      67323
+-----------+--------------------------+-----------
+   Total   |     60769         68156  |     128925
+
+Classified + if predicted Pr(D) >= .47
+True D defined as infB != 0
+--------------------------------------------------
+Sensitivity                     Pr( +| D)   79.17%
+Specificity                     Pr( -|~D)   80.20%
+Positive predictive value       Pr( D| +)   78.10%
+Negative predictive value       Pr(~D| -)   81.20%
+--------------------------------------------------
+False + rate for true ~D        Pr( +|~D)   19.80%
+False - rate for true D         Pr( -| D)   20.83%
+False + rate for classified +   Pr(~D| +)   21.90%
+False - rate for classified -   Pr( D| -)   18.80%
+--------------------------------------------------
+Correctly classified                        79.72%
+--------------------------------------------------
+
+. 
+. predict res92B, deviance
+(1728095 missing values generated)
+
+. 
+. qnorm res92B
+
+. 
+. pnorm res92B
+
+. 
+. *98
+. dprobit infB $carac $educ $gerais $derivadas $controles informalidadeconj $ocup9298 if ano==98 
+
+Iteration 0:   log likelihood = -101318.11
+Iteration 1:   log likelihood = -66869.247
+Iteration 2:   log likelihood = -63632.113
+Iteration 3:   log likelihood =  -63501.96
+Iteration 4:   log likelihood =  -63501.61
+
+Probit regression, reporting marginal effects           Number of obs = 146718
+                                                        LR chi2(31)   =75633.00
+                                                        Prob > chi2   = 0.0000
+Log likelihood =  -63501.61                             Pseudo R2     = 0.3732
+
+------------------------------------------------------------------------------
+    infB |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+   idade |  -.0239104   .0008726   -27.40   0.000   35.4295  -.025621   -.0222
+idadeq~d |   .0003165   .0000112    28.24   0.000   1394.21   .000295  .000338
+feminino*|   .0101677   .0036651     2.77   0.006   .418974   .002984  .017351
+indigena*|    .049451   .0331944     1.49   0.135   .002549  -.015609  .114511
+   preta*|   .0157471   .0067925     2.32   0.020   .064341   .002434   .02906
+ amarela*|   .0197349   .0229905     0.86   0.390   .004478  -.025326  .064795
+   parda*|   .0182957   .0037278     4.91   0.000   .406392   .010989  .025602
+analfa~o*|   .1160081    .006783    17.00   0.000   .107008   .102714  .129303
+primario*|   .0233489   .0051519     4.53   0.000   .501813   .013251  .033446
+   sgrau*|  -.0485161    .005706    -8.45   0.000   .236719    -.0597 -.037333
+superior*|  -.0930464   .0079517   -11.38   0.000   .080174  -.108631 -.077461
+mestrado*|  -.0895526   .0286185    -3.03   0.002   .003721  -.145644 -.033461
+  urbano*|  -.0278728   .0054315    -5.14   0.000   .821637  -.038518 -.017227
+sindic~o*|  -.3069866   .0039336   -64.55   0.000   .159442  -.314696 -.299277
+to~s_fam |  -.1618397   .0015303  -105.59   0.000   1.73514  -.164839  -.15884
+total_~o |   .0337546   .0018577    18.17   0.000   .952392   .030114  .037396
+to~a_fam |   .0378621    .000696    54.42   0.000   5.80814   .036498  .039226
+to~o_fam |  -.0348992   .0026937   -12.96   0.000   .298491  -.040179  -.02962
+renda_~m |  -.0000253    .000039    -0.65   0.516   1.89812  -.000102  .000051
+   norte*|   .1336634   .0066509    19.85   0.000   .069514   .120628  .146699
+nordeste*|   .1067039   .0042633    24.98   0.000   .297993   .098348   .11506
+  centro*|   .0761734   .0053347    14.29   0.000   .112686   .065718  .086629
+     sul*|    .002792   .0043731     0.64   0.523   .201543  -.005779  .011363
+inform~j*|   .1389562   .0036231    38.07   0.000   .408328   .131855  .146057
+   octec*|   .1281105   .0072573    17.48   0.000   .085988   .113886  .142335
+   ocadm*|   .0523408   .0062931     8.34   0.000   .121778   .040007  .064675
+  ocagro*|   .5294626   .0039541    87.90   0.000   .154582   .521713  .537213
+   ocind*|   .3384559    .004465    68.00   0.000   .174328   .329705  .347207
+   occom*|   .3499625   .0047072    63.93   0.000   .113762   .340737  .359188
+ octrans*|    .211086   .0078376    25.52   0.000   .041604   .195725  .226447
+   ocser*|   .3950656   .0045634    69.86   0.000   .105686   .386122   .40401
+---------+--------------------------------------------------------------------
+  obs. P |   .4640739
+ pred. P |   .4499675  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. outreg2 using INF_B, append
+dir : seeout
+
+. 
+. *testes
+. estat gof
+
+Probit model for infB, goodness-of-fit test
+
+       number of observations =    146718
+ number of covariate patterns =    135073
+         Pearson chi2(135041) =    607846.05
+                  Prob > chi2 =         0.0000
+
+. 
+. estat gof, group(15) //table
+
+Probit model for infB, goodness-of-fit test
+
+  (Table collapsed on quantiles of estimated probabilities)
+
+       number of observations =    146718
+             number of groups =        15
+     Hosmer-Lemeshow chi2(13) =       959.50
+                  Prob > chi2 =         0.0000
+
+. 
+. estat classification, cutoff(0.464) // colocar a media da informalidade de cada tipo
+
+Probit model for infB
+
+              -------- True --------
+Classified |         D            ~D  |      Total
+-----------+--------------------------+-----------
+     +     |     54923         15699  |      70622
+     -     |     13165         62931  |      76096
+-----------+--------------------------+-----------
+   Total   |     68088         78630  |     146718
+
+Classified + if predicted Pr(D) >= .464
+True D defined as infB != 0
+--------------------------------------------------
+Sensitivity                     Pr( +| D)   80.66%
+Specificity                     Pr( -|~D)   80.03%
+Positive predictive value       Pr( D| +)   77.77%
+Negative predictive value       Pr(~D| -)   82.70%
+--------------------------------------------------
+False + rate for true ~D        Pr( +|~D)   19.97%
+False - rate for true D         Pr( -| D)   19.34%
+False + rate for classified +   Pr(~D| +)   22.23%
+False - rate for classified -   Pr( D| -)   17.30%
+--------------------------------------------------
+Correctly classified                        80.33%
+--------------------------------------------------
+
+. 
+. predict res98B, deviance
+(1710302 missing values generated)
+
+. 
+. qnorm res98B
+
+. 
+. pnorm res98B
+
+. 
+. * 2004
+. dprobit infB $carac $educ $gerais $derivadas $controles informalidadeconj $ocup04 if ano==2004 
+
+Iteration 0:   log likelihood = -127242.91
+Iteration 1:   log likelihood = -88408.054
+Iteration 2:   log likelihood = -84585.424
+Iteration 3:   log likelihood = -84172.696
+Iteration 4:   log likelihood = -84110.046
+Iteration 5:   log likelihood = -84104.007
+Iteration 6:   log likelihood = -84103.893
+Iteration 7:   log likelihood = -84103.893
+
+Probit regression, reporting marginal effects           Number of obs = 184231
+                                                        LR chi2(33)   =86278.03
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -84103.893                             Pseudo R2     = 0.3390
+
+------------------------------------------------------------------------------
+    infB |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+   idade |  -.0287944   .0007639   -37.72   0.000   35.8303  -.030292 -.027297
+idadeq~d |   .0003746   9.74e-06    38.47   0.000   1425.89   .000355  .000394
+feminino*|   .1106623   .0030656    36.03   0.000   .439899   .104654  .116671
+indigena*|   .0179558   .0306573     0.59   0.556   .002101  -.042132  .078043
+   preta*|       .003   .0056865     0.53   0.598   .068973  -.008145  .014145
+ amarela*|   .1075202   .0229425     4.72   0.000   .003664   .062554  .152487
+   parda*|   .0136284   .0031696     4.30   0.000   .444583   .007416  .019841
+analfa~o*|   .1200084   .0064391    18.76   0.000   .086598   .107388  .132629
+primario*|   .0460912   .0044915    10.27   0.000   .435502   .037288  .054894
+   sgrau*|  -.0778873   .0044643   -17.19   0.000    .29241  -.086637 -.069137
+superior*|  -.1579326   .0058893   -24.51   0.000   .088351  -.169475  -.14639
+mestrado*|  -.2214545   .0166107   -10.66   0.000   .005102  -.254011 -.188898
+  urbano*|   .0070307    .005053     1.39   0.165   .840363  -.002873  .016934
+sindic~o*|  -.3130008   .0029759   -85.58   0.000    .16843  -.318834 -.307168
+to~s_fam |  -.0403796   .0005917   -68.40   0.000   4.94964  -.041539  -.03922
+total_~o |   .0129521   .0008085    16.02   0.000   3.02132   .011367  .014537
+to~a_fam |   .0075466   .0002966    25.46   0.000   17.6307   .006965  .008128
+to~o_fam |  -.0096622   .0010342    -9.34   0.000   1.25188  -.011689 -.007635
+renda_~m |  -1.34e-06   .0000159    -0.08   0.933   8.61616  -.000033   .00003
+   norte*|   .0897017   .0049679    18.21   0.000   .125077   .079965  .099439
+nordeste*|   .1126901   .0038029    29.74   0.000   .300709   .105237  .120144
+  centro*|   .0387796   .0046369     8.42   0.000    .11066   .029691  .047868
+     sul*|  -.0171552   .0038774    -4.41   0.000   .183758  -.024755 -.009556
+inform~j*|   .1018836   .0032567    30.56   0.000   .725763   .095501  .108267
+   ocdir*|   .6325321   .0038479    51.04   0.000   .047185    .62499  .640074
+    occa*|    .648061   .0038206    53.07   0.000   .058237   .640573  .655549
+   octnv*|   .6555834   .0041948    52.77   0.000    .06976   .647362  .663805
+  ocsadm*|   .6379288   .0056197    45.65   0.000   .077093   .626914  .648943
+    octs*|   .7805807   .0052967    59.73   0.000   .191146   .770199  .790962
+  ocvend*|   .7051268   .0035579    65.97   0.000      .091   .698153    .7121
+ octagro*|    .805673    .003642    76.28   0.000   .157889   .798535  .812811
+ocprodbs*|   .8090006   .0050093    62.97   0.000   .210122   .799183  .818819
+   ocfaa*|   .6029695    .002433    54.66   0.000   .008869   .598201  .607738
+---------+--------------------------------------------------------------------
+  obs. P |   .4648241
+ pred. P |   .4071786  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. outreg2 using INF_B, append
+dir : seeout
+
+. 
+. *testes
+. estat gof
+
+Probit model for infB, goodness-of-fit test
+
+       number of observations =    184231
+ number of covariate patterns =    182616
+         Pearson chi2(182582) =    501747.12
+                  Prob > chi2 =         0.0000
+
+. 
+. estat gof, group(15) //table
+
+Probit model for infB, goodness-of-fit test
+
+  (Table collapsed on quantiles of estimated probabilities)
+
+       number of observations =    184231
+             number of groups =        15
+     Hosmer-Lemeshow chi2(13) =       252.89
+                  Prob > chi2 =         0.0000
+
+. 
+. estat classification, cutoff(0.468) // colocar a media da informalidade de cada tipo
+
+Probit model for infB
+
+              -------- True --------
+Classified |         D            ~D  |      Total
+-----------+--------------------------+-----------
+     +     |     68341         24656  |      92997
+     -     |     17294         73940  |      91234
+-----------+--------------------------+-----------
+   Total   |     85635         98596  |     184231
+
+Classified + if predicted Pr(D) >= .468
+True D defined as infB != 0
+--------------------------------------------------
+Sensitivity                     Pr( +| D)   79.80%
+Specificity                     Pr( -|~D)   74.99%
+Positive predictive value       Pr( D| +)   73.49%
+Negative predictive value       Pr(~D| -)   81.04%
+--------------------------------------------------
+False + rate for true ~D        Pr( +|~D)   25.01%
+False - rate for true D         Pr( -| D)   20.20%
+False + rate for classified +   Pr(~D| +)   26.51%
+False - rate for classified -   Pr( D| -)   18.96%
+--------------------------------------------------
+Correctly classified                        77.23%
+--------------------------------------------------
+
+. 
+. predict res04B, deviance
+(1672789 missing values generated)
+
+. 
+. qnorm res04B
+
+. 
+. pnorm res04B
+
+. 
+. * 2014
+. dprobit infB $carac $educ $gerais $derivadas $controles informalidadeconj $ocup04 if ano==2014 
+
+Iteration 0:   log likelihood = -113551.67
+Iteration 1:   log likelihood = -84846.233
+Iteration 2:   log likelihood = -82505.654
+Iteration 3:   log likelihood = -82274.123
+Iteration 4:   log likelihood = -82233.729
+Iteration 5:   log likelihood = -82228.895
+Iteration 6:   log likelihood = -82228.747
+Iteration 7:   log likelihood = -82228.747
+
+Probit regression, reporting marginal effects           Number of obs = 176687
+                                                        LR chi2(33)   =62645.84
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -82228.747                             Pseudo R2     = 0.2758
+
+------------------------------------------------------------------------------
+    infB |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+   idade |  -.0221538   .0006315   -35.22   0.000   37.8778  -.023391 -.020916
+idadeq~d |   .0002791   7.80e-06    35.95   0.000   1584.97   .000264  .000294
+feminino*|   .0852954   .0027057    31.80   0.000   .446139   .079992  .090599
+indigena*|   .0543313   .0190945     2.97   0.003   .004437   .016907  .091756
+   preta*|   .0071135    .004197     1.70   0.088   .101252  -.001112  .015339
+ amarela*|   .0213255   .0196259     1.11   0.268   .004137  -.017141  .059792
+   parda*|   .0102038   .0026884     3.80   0.000   .465699   .004935  .015473
+analfa~o*|   .1512962   .0071396    22.77   0.000   .048345   .137303  .165289
+primario*|   .0372027   .0039751     9.47   0.000    .32913   .029412  .044994
+   sgrau*|  -.0638533   .0036494   -17.15   0.000   .358413  -.071006 -.056701
+superior*|  -.1298347   .0039381   -28.92   0.000   .156265  -.137553 -.122116
+mestrado*|  -.1590938     .00971   -11.74   0.000   .008076  -.178125 -.140062
+  urbano*|  -.0004733   .0041697    -0.11   0.910   .865582  -.008646  .007699
+sindic~o*|  -.2003007   .0025183   -63.92   0.000   .158359  -.205236 -.195365
+to~s_fam |  -.0349399   .0005612   -62.98   0.000   5.17161   -.03604  -.03384
+total_~o |   .0131335   .0008022    16.38   0.000   2.29481   .011561  .014706
+to~a_fam |    .009327   .0003099    30.20   0.000    14.739    .00872  .009934
+to~o_fam |   -.008689   .0008795    -9.88   0.000   1.32923  -.010413 -.006965
+renda_~m |    .000011   7.16e-06     1.53   0.125    13.968  -3.1e-06  .000025
+   norte*|   .1115708   .0042509    27.68   0.000   .149502   .103239  .119902
+nordeste*|   .1013808    .003429    30.63   0.000   .273744    .09466  .108101
+  centro*|    .027617   .0041075     6.85   0.000   .109176   .019566  .035668
+     sul*|   -.061485   .0031836   -18.47   0.000   .181072  -.067725 -.055245
+inform~j*|   .0739455    .002607    27.68   0.000   .651067   .068836  .079055
+   ocdir*|   .7315305   .0085543    33.47   0.000   .049053   .714764  .748297
+    occa*|   .7733168   .0080914    36.56   0.000   .091688   .757458  .789176
+   octnv*|   .7588785   .0075167    36.32   0.000    .06803   .744146  .773611
+  ocsadm*|   .6795071   .0152161    27.78   0.000   .093951   .649684   .70933
+    octs*|   .8368956   .0086942    40.17   0.000    .19062   .819855  .853936
+  ocvend*|    .801445   .0056868    41.79   0.000   .091812   .790299  .812591
+ octagro*|   .8490724   .0037727    50.61   0.000     .1129   .841678  .856467
+ocprodbs*|   .8664574   .0079848    42.65   0.000   .226576   .850808  .882107
+   ocfaa*|   .7457584   .0025003    44.32   0.000   .009242   .740858  .750659
+---------+--------------------------------------------------------------------
+  obs. P |    .342487
+ pred. P |   .2620959  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. outreg2 using INF_B, append
+dir : seeout
+
+. 
+. *testes
+. estat gof
+
+Probit model for infB, goodness-of-fit test
+
+       number of observations =    176687
+ number of covariate patterns =    175627
+         Pearson chi2(175593) =    280841.02
+                  Prob > chi2 =         0.0000
+
+. 
+. estat gof, group(15) //table
+
+Probit model for infB, goodness-of-fit test
+
+  (Table collapsed on quantiles of estimated probabilities)
+
+       number of observations =    176687
+             number of groups =        15
+     Hosmer-Lemeshow chi2(13) =       208.61
+                  Prob > chi2 =         0.0000
+
+. 
+. estat classification, cutoff(0.3424) // colocar a media da informalidade de cada tipo
+
+Probit model for infB
+
+              -------- True --------
+Classified |         D            ~D  |      Total
+-----------+--------------------------+-----------
+     +     |     47166         32501  |      79667
+     -     |     13347         83673  |      97020
+-----------+--------------------------+-----------
+   Total   |     60513        116174  |     176687
+
+Classified + if predicted Pr(D) >= .3424
+True D defined as infB != 0
+--------------------------------------------------
+Sensitivity                     Pr( +| D)   77.94%
+Specificity                     Pr( -|~D)   72.02%
+Positive predictive value       Pr( D| +)   59.20%
+Negative predictive value       Pr(~D| -)   86.24%
+--------------------------------------------------
+False + rate for true ~D        Pr( +|~D)   27.98%
+False - rate for true D         Pr( -| D)   22.06%
+False + rate for classified +   Pr(~D| +)   40.80%
+False - rate for classified -   Pr( D| -)   13.76%
+--------------------------------------------------
+Correctly classified                        74.05%
+--------------------------------------------------
+
+. 
+. predict res14B, deviance
+(1680333 missing values generated)
+
+. 
+. qnorm res14B
+
+. 
+. pnorm res14B
+
+. 
+. * -------------- INFORMALIDADE TIPO C
+. *92  
+. dprobit infC $carac $educ $gerais $derivadas $controles informalidadeconj $ocup9298 if ano==92 // ESCOLHER UMA DAS DUAS
+
+Iteration 0:   log likelihood = -88773.833
+Iteration 1:   log likelihood = -55013.365
+Iteration 2:   log likelihood = -52551.642
+Iteration 3:   log likelihood = -52450.886
+Iteration 4:   log likelihood = -52450.396
+Iteration 5:   log likelihood = -52450.396
+
+Probit regression, reporting marginal effects           Number of obs = 128973
+                                                        LR chi2(31)   =72646.87
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -52450.396                             Pseudo R2     = 0.4092
+
+------------------------------------------------------------------------------
+    infC |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+   idade |  -.0074316   .0009116    -8.15   0.000   34.8585  -.009218 -.005645
+idadeq~d |   .0001496   .0000118    12.68   0.000   1354.88   .000127  .000173
+feminino*|   .1249387   .0039507    31.60   0.000   .405085   .117195  .132682
+indigena*|   -.015855   .0613259    -0.26   0.797   .000806  -.136052  .104342
+   preta*|  -.0058868   .0074153    -0.79   0.428   .058679  -.020421  .008647
+ amarela*|   .0016709   .0307917     0.05   0.957   .003784   -.05868  .062022
+   parda*|   -.010034   .0039954    -2.51   0.012   .405659  -.017865 -.002203
+analfa~o*|   .0101624   .0063778     1.60   0.110   .138758  -.002338  .022663
+primario*|   .0105516    .005569     1.89   0.058   .546045  -.000363  .021467
+   sgrau*|  -.0269073   .0067225    -3.98   0.000   .203004  -.040083 -.013731
+superior*|  -.0827436   .0102104    -7.82   0.000   .072604  -.102756 -.062732
+mestrado*|   -.112314   .0518748    -2.02   0.043   .002543  -.213987 -.010641
+  urbano*|   .0383356   .0055836     6.80   0.000   .805851   .027392  .049279
+sindic~o*|  -.2411761   .0040598   -51.57   0.000   .179417  -.249133 -.233219
+to~s_fam |  -.0364898   .0009552   -38.16   0.000   3.44235  -.038362 -.034618
+total_~o |   .0586553    .001279    45.95   0.000   2.06891   .056148  .061162
+to~a_fam |  -.0008983   .0004363    -2.06   0.039   12.7015  -.001753 -.000043
+to~o_fam |   5.61e-06    .001739     0.00   0.997    .76623  -.003403  .003414
+renda_~m |   1.78e-07   1.29e-07     1.37   0.169   1008.18  -7.6e-08  4.3e-07
+   norte*|   .0184325   .0075982     2.44   0.015   .064455    .00354  .033325
+nordeste*|   .0274564   .0046849     5.88   0.000   .286308   .018274  .036639
+  centro*|  -.0061725   .0057844    -1.07   0.287    .10986   -.01751  .005165
+     sul*|   .0289496   .0047275     6.15   0.000   .207322   .019684  .038215
+inform~j*|   .0535329   .0038955    13.67   0.000   .610159   .045898  .061168
+   octec*|  -.1935346   .0082223   -20.52   0.000   .078621   -.20965 -.177419
+   ocadm*|  -.1264291   .0068441   -17.46   0.000    .13471  -.139843 -.113015
+  ocagro*|   .5909161   .0041206    98.11   0.000   .193141    .58284  .598992
+   ocind*|   .4201155   .0047231    77.20   0.000   .179386   .410858  .429373
+   occom*|   .5618506   .0034672   101.46   0.000    .10765   .555055  .568646
+ octrans*|   .2962419   .0080839    33.53   0.000   .040256   .280398  .312086
+   ocser*|   .5999764   .0030206   103.41   0.000   .095586   .594056  .605897
+---------+--------------------------------------------------------------------
+  obs. P |   .4508773
+ pred. P |   .4068506  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. outreg2 using INF_C, append
+dir : seeout
+
+. 
+. *testes
+. estat gof
+
+Probit model for infC, goodness-of-fit test
+
+       number of observations =    128973
+ number of covariate patterns =    127418
+         Pearson chi2(127386) =    167610.00
+                  Prob > chi2 =         0.0000
+
+. 
+. estat gof, group(15) //table
+
+Probit model for infC, goodness-of-fit test
+
+  (Table collapsed on quantiles of estimated probabilities)
+
+       number of observations =    128973
+             number of groups =        15
+     Hosmer-Lemeshow chi2(13) =      1172.77
+                  Prob > chi2 =         0.0000
+
+. 
+. estat classification, cutoff(0.451) // colocar a media da informalidade de cada tipo
+
+Probit model for infC
+
+              -------- True --------
+Classified |         D            ~D  |      Total
+-----------+--------------------------+-----------
+     +     |     49810         14236  |      64046
+     -     |      8341         56586  |      64927
+-----------+--------------------------+-----------
+   Total   |     58151         70822  |     128973
+
+Classified + if predicted Pr(D) >= .451
+True D defined as infC != 0
+--------------------------------------------------
+Sensitivity                     Pr( +| D)   85.66%
+Specificity                     Pr( -|~D)   79.90%
+Positive predictive value       Pr( D| +)   77.77%
+Negative predictive value       Pr(~D| -)   87.15%
+--------------------------------------------------
+False + rate for true ~D        Pr( +|~D)   20.10%
+False - rate for true D         Pr( -| D)   14.34%
+False + rate for classified +   Pr(~D| +)   22.23%
+False - rate for classified -   Pr( D| -)   12.85%
+--------------------------------------------------
+Correctly classified                        82.49%
+--------------------------------------------------
+
+. 
+. predict res92C, deviance
+(1728047 missing values generated)
+
+. 
+. qnorm res92C
+
+. 
+. pnorm res92C
+
+. 
+. *98
+. dprobit infC $carac $educ $gerais $derivadas $controles informalidadeconj $ocup9298 if ano==98 
+
+Iteration 0:   log likelihood = -100988.88
+Iteration 1:   log likelihood = -62386.569
+Iteration 2:   log likelihood = -59554.683
+Iteration 3:   log likelihood = -59451.936
+Iteration 4:   log likelihood = -59451.546
+Iteration 5:   log likelihood = -59451.546
+
+Probit regression, reporting marginal effects           Number of obs = 146739
+                                                        LR chi2(31)   =83074.67
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -59451.546                             Pseudo R2     = 0.4113
+
+------------------------------------------------------------------------------
+    infC |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+   idade |  -.0093079   .0008702   -10.70   0.000   35.4298  -.011013 -.007602
+idadeq~d |   .0001714   .0000112    15.26   0.000   1394.24   .000149  .000193
+feminino*|   .0788002   .0037237    21.18   0.000   .418968   .071502  .086099
+indigena*|  -.0383999   .0309281    -1.22   0.221   .002549  -.099018  .022218
+   preta*|   .0106315   .0068166     1.56   0.118   .064346  -.002729  .023992
+ amarela*|   .0149459   .0252536     0.59   0.552   .004477   -.03455  .064442
+   parda*|   .0004222   .0037568     0.11   0.911   .406415  -.006941  .007785
+analfa~o*|   .0356115   .0064815     5.53   0.000    .10702   .022908  .048315
+primario*|   .0256923    .005109     5.03   0.000   .501823   .015679  .035706
+   sgrau*|  -.0168488   .0058769    -2.86   0.004   .236706  -.028367  -.00533
+superior*|  -.0897881   .0086867    -9.95   0.000   .080176  -.106814 -.072762
+mestrado*|  -.1284435   .0360155    -3.29   0.001   .003721  -.199033 -.057854
+  urbano*|   .0182191    .005233     3.47   0.001   .821649   .007963  .028476
+sindic~o*|  -.2100886   .0041474   -45.13   0.000   .159426  -.218217  -.20196
+to~s_fam |  -.0753883   .0014079   -53.48   0.000   1.73504  -.078148 -.072629
+total_~o |     .11321   .0018944    59.85   0.000   .952392   .109497  .116923
+to~a_fam |   .0039735   .0006605     6.02   0.000   5.80819   .002679  .005268
+to~o_fam |  -.0105147   .0026908    -3.91   0.000    .29851  -.015789 -.005241
+renda_~m |  -.0000709   .0000476    -1.49   0.137   1.89785  -.000164  .000022
+   norte*|    .034753   .0069751     5.02   0.000   .069532   .021082  .048424
+nordeste*|   .0335093   .0043549     7.72   0.000   .297985   .024974  .042045
+  centro*|  -.0194233   .0053623    -3.60   0.000   .112669  -.029933 -.008913
+     sul*|   .0206456   .0044532     4.65   0.000   .201514   .011918  .029374
+inform~j*|   .0607054   .0037159    16.35   0.000   .408303   .053422  .067989
+   octec*|  -.1820737   .0074911   -21.62   0.000   .085976  -.196756 -.167391
+   ocadm*|  -.0819969   .0063821   -12.48   0.000   .121774  -.094506 -.069488
+  ocagro*|   .5779765   .0036995   101.62   0.000   .154615   .570726  .585227
+   ocind*|   .4326376   .0041978    87.78   0.000   .174323    .42441  .440865
+   occom*|   .5370346   .0034427   104.49   0.000   .113767   .530287  .543782
+ octrans*|   .3323715   .0068547    42.54   0.000   .041598   .318937  .345806
+   ocser*|   .6093682   .0026623   119.38   0.000   .105684    .60415  .614586
+---------+--------------------------------------------------------------------
+  obs. P |    .450412
+ pred. P |   .4109862  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. outreg2 using INF_C, append
+dir : seeout
+
+. 
+. *testes
+. estat gof
+
+Probit model for infC, goodness-of-fit test
+
+       number of observations =    146739
+ number of covariate patterns =    135093
+         Pearson chi2(135061) =    234169.44
+                  Prob > chi2 =         0.0000
+
+. 
+. estat gof, group(15) //table
+
+Probit model for infC, goodness-of-fit test
+
+  (Table collapsed on quantiles of estimated probabilities)
+
+       number of observations =    146739
+             number of groups =        15
+     Hosmer-Lemeshow chi2(13) =      2534.44
+                  Prob > chi2 =         0.0000
+
+. 
+. estat classification, cutoff(0.4504) // colocar a media da informalidade de cada tipo
+
+Probit model for infC
+
+              -------- True --------
+Classified |         D            ~D  |      Total
+-----------+--------------------------+-----------
+     +     |     56877         16090  |      72967
+     -     |      9216         64556  |      73772
+-----------+--------------------------+-----------
+   Total   |     66093         80646  |     146739
+
+Classified + if predicted Pr(D) >= .4504
+True D defined as infC != 0
+--------------------------------------------------
+Sensitivity                     Pr( +| D)   86.06%
+Specificity                     Pr( -|~D)   80.05%
+Positive predictive value       Pr( D| +)   77.95%
+Negative predictive value       Pr(~D| -)   87.51%
+--------------------------------------------------
+False + rate for true ~D        Pr( +|~D)   19.95%
+False - rate for true D         Pr( -| D)   13.94%
+False + rate for classified +   Pr(~D| +)   22.05%
+False - rate for classified -   Pr( D| -)   12.49%
+--------------------------------------------------
+Correctly classified                        82.75%
+--------------------------------------------------
+
+. 
+. predict res98C, deviance
+(1710281 missing values generated)
+
+. 
+. qnorm res98C
+
+. 
+. pnorm res98C
+
+. 
+. * 2004
+. dprobit infC $carac $educ $gerais $derivadas $controles informalidadeconj $ocup04 if ano==2004 
+
+Iteration 0:   log likelihood = -127652.46
+Iteration 1:   log likelihood = -92010.088
+Iteration 2:   log likelihood = -89784.378
+Iteration 3:   log likelihood = -89714.862
+Iteration 4:   log likelihood = -89712.271
+Iteration 5:   log likelihood = -89712.208
+Iteration 6:   log likelihood = -89712.208
+
+Probit regression, reporting marginal effects           Number of obs = 184233
+                                                        LR chi2(33)   =75880.49
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -89712.208                             Pseudo R2     = 0.2972
+
+------------------------------------------------------------------------------
+    infC |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+   idade |  -.0068827   .0007519    -9.15   0.000   35.8301  -.008356 -.005409
+idadeq~d |   .0001515   9.66e-06    15.68   0.000   1425.88   .000133   .00017
+feminino*|   .1544116   .0029943    51.00   0.000   .439905   .148543   .16028
+indigena*|  -.0031411   .0297845    -0.11   0.916   .002101  -.061518  .055235
+   preta*|  -.0150129   .0055338    -2.71   0.007   .068978  -.025859 -.004167
+ amarela*|   .1315215   .0227132     5.66   0.000   .003664   .087004  .176039
+   parda*|   -.008681   .0031448    -2.76   0.006   .444584  -.014845 -.002517
+analfa~o*|   .0548967   .0058568     9.37   0.000   .086597   .043418  .066376
+primario*|   .0694993   .0043045    16.12   0.000   .435503   .061063  .077936
+   sgrau*|  -.0212683   .0045071    -4.71   0.000   .292407  -.030102 -.012435
+superior*|  -.0845022   .0068208   -12.16   0.000    .08835  -.097871 -.071134
+mestrado*|  -.1907398   .0234241    -7.32   0.000   .005102   -.23665  -.14483
+  urbano*|   .0293987   .0048894     5.99   0.000    .84036   .019816  .038982
+sindic~o*|  -.2595006   .0033703   -68.85   0.000   .168433  -.266106 -.252895
+to~s_fam |  -.0205308   .0005584   -36.76   0.000   4.94961  -.021625 -.019436
+total_~o |   .0403442   .0008022    50.32   0.000   3.02131   .038772  .041916
+to~a_fam |  -.0024301   .0002829    -8.59   0.000   17.6307  -.002985 -.001876
+to~o_fam |    -.00156   .0010183    -1.53   0.126   1.25188  -.003556  .000436
+renda_~m |   .0000383   .0000165     2.32   0.020   8.61606   6.0e-06  .000071
+   norte*|   .0018532    .004832     0.38   0.701   .125075  -.007617  .011324
+nordeste*|   .0293211   .0037241     7.88   0.000   .300706   .022022   .03662
+  centro*|   -.004414   .0046034    -0.96   0.338   .110659  -.013437  .004608
+     sul*|  -.0060841   .0039214    -1.55   0.121   .183756   -.01377  .001602
+inform~j*|   .0730267   .0033122    21.87   0.000    .72576   .066535  .079519
+   ocdir*|   .4934185   .0032433    78.96   0.000   .047185   .487062  .499775
+    occa*|  -.0489209   .0101308    -4.79   0.000   .058236  -.068777 -.029065
+   octnv*|   .2867035   .0063253    40.00   0.000   .069765   .274306  .299101
+  ocsadm*|   .1532703   .0074411    20.06   0.000   .077093   .138686  .167855
+    octs*|   .5063257   .0039206    94.77   0.000   .191144   .498642   .51401
+  ocvend*|   .5412983   .0026913   104.51   0.000   .090999   .536023  .546573
+ octagro*|   .6195144   .0027505   113.49   0.000   .157892   .614123  .624905
+ocprodbs*|   .4831784   .0043502    86.18   0.000    .21012   .474652  .491705
+   ocfaa*|  -.3022771   .0275121    -8.14   0.000   .008869    -.3562 -.248354
+---------+--------------------------------------------------------------------
+  obs. P |   .4885715
+ pred. P |   .4689062  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. outreg2 using INF_C, append
+dir : seeout
+
+. 
+. *testes
+. estat gof
+
+Probit model for infC, goodness-of-fit test
+
+       number of observations =    184233
+ number of covariate patterns =    182618
+         Pearson chi2(182584) =    322897.57
+                  Prob > chi2 =         0.0000
+
+. 
+. estat gof, group(15) //table
+
+Probit model for infC, goodness-of-fit test
+
+  (Table collapsed on quantiles of estimated probabilities)
+
+       number of observations =    184233
+             number of groups =        15
+     Hosmer-Lemeshow chi2(13) =       434.74
+                  Prob > chi2 =         0.0000
+
+. 
+. estat classification, cutoff(0.488) // colocar a media da informalidade de cada tipo
+
+Probit model for infC
+
+              -------- True --------
+Classified |         D            ~D  |      Total
+-----------+--------------------------+-----------
+     +     |     73149         25661  |      98810
+     -     |     16862         68561  |      85423
+-----------+--------------------------+-----------
+   Total   |     90011         94222  |     184233
+
+Classified + if predicted Pr(D) >= .488
+True D defined as infC != 0
+--------------------------------------------------
+Sensitivity                     Pr( +| D)   81.27%
+Specificity                     Pr( -|~D)   72.77%
+Positive predictive value       Pr( D| +)   74.03%
+Negative predictive value       Pr(~D| -)   80.26%
+--------------------------------------------------
+False + rate for true ~D        Pr( +|~D)   27.23%
+False - rate for true D         Pr( -| D)   18.73%
+False + rate for classified +   Pr(~D| +)   25.97%
+False - rate for classified -   Pr( D| -)   19.74%
+--------------------------------------------------
+Correctly classified                        76.92%
+--------------------------------------------------
+
+. 
+. predict res04C, deviance
+(1672787 missing values generated)
+
+. 
+. qnorm res04C
+
+. 
+. pnorm res04C
+
+. 
+. 
+. * 2014
+. dprobit infC $carac $educ $gerais $derivadas $controles informalidadeconj $ocup04 if ano==2014 
+
+note: ocfaa != 0 predicts failure perfectly
+      ocfaa dropped and 1633 obs not used
+
+Iteration 0:   log likelihood = -119542.88
+Iteration 1:   log likelihood =     -88452
+Iteration 2:   log likelihood = -86498.365
+Iteration 3:   log likelihood =  -86445.26
+Iteration 4:   log likelihood = -86445.117
+Iteration 5:   log likelihood = -86445.117
+
+Probit regression, reporting marginal effects           Number of obs = 175054
+                                                        LR chi2(32)   =66195.52
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -86445.117                             Pseudo R2     = 0.2769
+
+------------------------------------------------------------------------------
+    infC |      dF/dx   Std. Err.      z    P>|z|     x-bar  [    95% C.I.   ]
+---------+--------------------------------------------------------------------
+   idade |  -.0032929   .0007265    -4.53   0.000   37.9085  -.004717 -.001869
+idadeq~d |   .0001091   9.03e-06    12.08   0.000   1587.54   .000091  .000127
+feminino*|   .1318477   .0030297    43.34   0.000   .449558   .125909  .137786
+indigena*|   .0248636   .0204775     1.22   0.221   .004427  -.015272  .064999
+   preta*|  -.0250331   .0046785    -5.30   0.000   .101083  -.034203 -.015863
+ amarela*|  -.0047073   .0215925    -0.22   0.828   .004153  -.047028  .037613
+   parda*|  -.0118849   .0030882    -3.85   0.000   .465805  -.017938 -.005832
+analfa~o*|   .0638993   .0070856     9.14   0.000   .048796   .050012  .077787
+primario*|   .0577497   .0045101    12.87   0.000   .331926    .04891  .066589
+   sgrau*|  -.0253315   .0043314    -5.83   0.000   .357061  -.033821 -.016842
+superior*|  -.0670405   .0055362   -11.82   0.000   .154901  -.077891  -.05619
+mestrado*|  -.1754628    .017352    -8.59   0.000   .007986  -.209472 -.141454
+  urbano*|  -.0057773   .0048488    -1.19   0.233   .864602  -.015281  .003726
+sindic~o*|  -.2072304   .0032749   -55.58   0.000   .158602  -.213649 -.200812
+to~s_fam |    -.02614   .0006166   -42.37   0.000   5.16553  -.027348 -.024932
+total_~o |   .0512638    .000943    54.41   0.000   2.29966   .049416  .053112
+to~a_fam |   .0003343   .0003549     0.94   0.346   14.7426  -.000361   .00103
+to~o_fam |  -.0033553   .0010092    -3.32   0.001   1.32971  -.005333 -.001377
+renda_~m |   .0000442   7.77e-06     5.68   0.000    13.955   .000029  .000059
+   norte*|   .0311291   .0044693     7.01   0.000   .149023   .022369  .039889
+nordeste*|   .0371601   .0037187    10.04   0.000   .274241   .029871  .044449
+  centro*|  -.0084956   .0045202    -1.87   0.061   .108721  -.017355  .000364
+     sul*|  -.0196278   .0038531    -5.07   0.000    .18131   -.02718 -.012076
+inform~j*|   .0599982   .0030471    19.50   0.000   .651782   .054026   .06597
+   ocdir*|   .5492682   .0045686    68.94   0.000    .04951   .540314  .558222
+    occa*|  -.0240605    .010033    -2.38   0.017   .092543  -.043725 -.004396
+   octnv*|   .3779033   .0076479    42.97   0.000   .068665   .362914  .392893
+  ocsadm*|   .2071741   .0089353    23.01   0.000   .094828   .189661  .224687
+    octs*|   .5709899   .0052686    79.81   0.000   .192398   .560664  .581316
+  ocvend*|   .5900833   .0040102    84.09   0.000   .092669   .582224  .597943
+ octagro*|   .6432025   .0035525    89.71   0.000   .113953    .63624  .650165
+ocprodbs*|   .5510397   .0058168    74.51   0.000   .228689   .539639   .56244
+---------+--------------------------------------------------------------------
+  obs. P |   .4285135
+ pred. P |   .3860149  (at x-bar)
+------------------------------------------------------------------------------
+(*) dF/dx is for discrete change of dummy variable from 0 to 1
+    z and P>|z| correspond to the test of the underlying coefficient being 0
+
+. outreg2 using INF_C, append
+dir : seeout
+
+. 
+. *testes
+. estat gof
+
+Probit model for infC, goodness-of-fit test
+
+       number of observations =    175054
+ number of covariate patterns =    173997
+         Pearson chi2(173964) =    212999.16
+                  Prob > chi2 =         0.0000
+
+. 
+. estat gof, group(15) //table
+
+Probit model for infC, goodness-of-fit test
+
+  (Table collapsed on quantiles of estimated probabilities)
+
+       number of observations =    175054
+             number of groups =        15
+     Hosmer-Lemeshow chi2(13) =       754.79
+                  Prob > chi2 =         0.0000
+
+. 
+. estat classification, cutoff(0.4245) // colocar a media da informalidade de cada tipo
+
+Probit model for infC
+
+              -------- True --------
+Classified |         D            ~D  |      Total
+-----------+--------------------------+-----------
+     +     |     61261         29690  |      90951
+     -     |     13752         70351  |      84103
+-----------+--------------------------+-----------
+   Total   |     75013        100041  |     175054
+
+Classified + if predicted Pr(D) >= .4245
+True D defined as infC != 0
+--------------------------------------------------
+Sensitivity                     Pr( +| D)   81.67%
+Specificity                     Pr( -|~D)   70.32%
+Positive predictive value       Pr( D| +)   67.36%
+Negative predictive value       Pr(~D| -)   83.65%
+--------------------------------------------------
+False + rate for true ~D        Pr( +|~D)   29.68%
+False - rate for true D         Pr( -| D)   18.33%
+False + rate for classified +   Pr(~D| +)   32.64%
+False - rate for classified -   Pr( D| -)   16.35%
+--------------------------------------------------
+Correctly classified                        75.18%
+--------------------------------------------------
+
+. 
+. predict res14C, deviance
+(1681966 missing values generated)
+
+. 
+. qnorm res14C
+
+. 
+. pnorm res14C
+
+. 
+. 
+end of do-file
+
+. sum infA
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+        infA |   1856893    .5341094    .4988353          0          1
+
